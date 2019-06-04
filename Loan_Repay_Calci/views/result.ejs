@@ -4,12 +4,14 @@
         <title>
             Loan Repayment Calculator
         </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet", href="/static/style.css">
+        <script src="/static/changeValue.js"></script> 
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -33,14 +35,27 @@
                     
 
                 </div>
-                <div class="col-sm-6 well col-md-offset-1">
-                    <div>
+                <div class="col-sm-6 well col-md-offset-1" >
                         <br>
-                        <br>
-                        <h4 class="form_font"> EMI (monthly)&nbsp;: <%= emi %> </h4><br>
+                        <div class="slidecontainer">
+                            <span class="badge badge-secondary "><%= min %></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="badge badge-secondary"><%= max %></span><br><br>
+                            <form method="POST" class="ranging" acttion="/emi" >
+                            <input type="range" min="<%= min %>" max="<%= max %>" step="0.25" name="range_slider" class="slider" 
+                            id="myRange" value="<%=intrest_rate%>">
+                            </form>
+                            
+                            
+                            <br>
+
+                        </div>
+                        
+                        
+                        <h4 class="form_font" id="emi"> EMI (monthly)&nbsp;: <%= emi %> </h4><br>
                         <h4 class="form_font"> Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;: <%= intrest %></h4><br>
-                        <h4 class="form_font"> Total Amount &nbsp;: <%= total_amount %> </h4><br><br>
-                    </div>
+                        <h4 class="form_font"> Total Amount &nbsp;: <%= total_amount %> </h4><br>
+                   
     
                 </div>
             </div>
