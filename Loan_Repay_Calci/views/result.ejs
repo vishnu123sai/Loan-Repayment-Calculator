@@ -7,11 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+      
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <link rel="stylesheet", href="/static/style.css">
-        <script src="/static/changeValue.js"></script> 
+        <link rel="stylesheet", href="/static/style.css" type="text/css">
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -20,42 +19,66 @@
         <br>
         <div class="container ">
             <div class="row well">
-                <div class="col-sm-4 well">
-                    <form action="/" method="POST">
+                <div class="col-sm-4 col-md-offset-1 well">
+                    <form method="POST" id="loan_form" action="/emi">
                         <label class="form_font"> Principal Amount :</label><br>
                         <input type="number" class="form-control" name="loan_amount" required><br>
                         <label class="form_font"> Time Period (in months) :</label><br>
                         <input type="number" class="form-control" name="period" required><br>
                         <label class="form_font"> Interest Rate :</label><br>
                         <input type="number" step="0.01" class="form-control" name="intrest_rate" required><br>
-                        <input type="submit" class="btn btn-success form-control form_font" name="get_emi", value="Generate EMI">
+                        <input type="submit" class="btn btn-success form-control form_font" name="get_emi" value="Generate EMI">
                     </form>
                     <br>
         
                     
 
                 </div>
-                <div class="col-sm-6 well col-md-offset-1" >
-                        <br>
+                
+                <div class="col-sm-5 col-md-offset-1 well" >
+                        
                         <div class="slidecontainer">
-                            <span class="badge badge-secondary "><%= min %></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class="badge badge-secondary"><%= max %></span><br><br>
-                            <form method="POST" class="ranging" acttion="/emi" >
+                            <b class="text">Intrest Rate</b><br><br>
+                            <form method="POST" class="ranging" >
                             <input type="range" min="<%= min %>" max="<%= max %>" step="0.25" name="range_slider" class="slider" 
-                            id="myRange" value="<%=intrest_rate%>">
+                            id="range_weight" value="<%= intrest_rate%>" oninput="range_weight_disp.value = range_weight.value" onchange="fun()">
+                            <b><output  id="range_weight_disp"><%= intrest_rate%></output></b>
                             </form>
-                            
+                            <script >
+                                function fun(){
+                                    var r = document.getElementById("range_weight_disp").innerHTML;
+                                    var p = <%= principle_amount %>;
+                                    var t = <%= period %>;
+                                    var emi=0;
+                                    if(r>0)
+                                    emi = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t);
+                                    console.log(emi)
+                                    if(emi<0)
+                                    {
+                                        emi = -emi;
+                                    }
+                                    var total = emi*t;
+                                    document.getElementById('emi').innerHTML= "EMI (monthly) : " +Number(Math.round(emi+'e2')+'e-2') ;
+                                    if(emi === 0)
+                                    document.getElementById('t_intrest').innerHTML="Total Intrest    :" +0;
+                                    else
+                                    document.getElementById('t_intrest').innerHTML="Total Intrest    :" +Number(Math.round((total-p)+'e2')+'e-2');
+                                    document.getElementById('t_amount').innerHTML= "Total Amount  :"+Number(Math.round(total+'e2')+'e-2');
+                                }
+                            </script>
+                        
                             
                             <br>
 
                         </div>
                         
                         
-                        <h4 class="form_font" id="emi"> EMI (monthly)&nbsp;: <%= emi %> </h4><br>
-                        <h4 class="form_font"> Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;: <%= intrest %></h4><br>
-                        <h4 class="form_font"> Total Amount &nbsp;: <%= total_amount %> </h4><br>
-                   
+                        <h4 class="form_font" id="emi"> EMI (monthly)&nbsp;: <b id="emi"><%= emi %></b> </h4><br>
+                        <h4 class="form_font" id="t_intrest"> Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;:<b id="emi"> <%= intrest %></b></h4><br>
+                        <h4 class="form_font" id=t_amount> Total Amount &nbsp;: <b id="emi"><%= total_amount %> </b></h4><br>
+                        
+                      
+                      
     
                 </div>
             </div>

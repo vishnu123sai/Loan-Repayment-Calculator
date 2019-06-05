@@ -13,7 +13,7 @@ app.set("view engine", "ejs");
 app.get("/", function(req,res){
     res.render("index")
 });
-app.post("/", urlencodedParser, function(req, res){
+app.post("/emi", urlencodedParser, function(req, res){
     p = req.body.loan_amount;
     t = req.body.period;
     r = req.body.intrest_rate;
@@ -39,10 +39,8 @@ app.post("/", urlencodedParser, function(req, res){
     })
 });
 
-app.post("/emi",urlencodedParser, function(req,res){
-    console.log(req.body)
-    res.json(req.body)
-})
+
+
 
 
 var server  = app.listen(3000);

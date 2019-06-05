@@ -54,10 +54,16 @@ body{
   }
 
 input[type=range] {
-    display : -webkit-box;
-    width: 50%;
+    
+    width: 60%;
 }
 
-.col-sm-6{
+.col-sm-4{
     align-self: center
+}
+output{
+    font-style: inherit;
+    display: block;
+    padding-top: 15px;
+    padding-left: 0px;
 }
