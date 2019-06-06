@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-      
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         <link rel="stylesheet", href="/static/style.css" type="text/css">
     </head>
     <body>
@@ -22,11 +22,11 @@
                 <div class="col-sm-4 col-md-offset-1 well">
                     <form method="POST" id="loan_form" action="/emi">
                         <label class="form_font"> Principal Amount :</label><br>
-                        <input type="number" class="form-control" name="loan_amount" required><br>
+                        <input type="number" class="form-control" name="loan_amount" min="1"  required><br>
                         <label class="form_font"> Time Period (in months) :</label><br>
-                        <input type="number" class="form-control" name="period" required><br>
+                        <input type="number" class="form-control" name="period" min="1" required><br>
                         <label class="form_font"> Interest Rate :</label><br>
-                        <input type="number" step="0.01" class="form-control" name="intrest_rate" required><br>
+                        <input type="number" step="0.01" class="form-control" min="0" max="100" name="intrest_rate" required><br>
                         <input type="submit" class="btn btn-success form-control form_font" name="get_emi" value="Generate EMI">
                     </form>
                     <br>
@@ -58,31 +58,62 @@
                                         emi = -emi;
                                     }
                                     var total = emi*t;
-                                    document.getElementById('emi').innerHTML= "EMI (monthly) : " +Number(Math.round(emi+'e2')+'e-2') ;
+                                    document.getElementById('emi').innerHTML=Number(Math.round(emi+'e2')+'e-2') ;
                                     if(emi === 0)
-                                    document.getElementById('t_intrest').innerHTML="Total Intrest    :" +0;
+                                    document.getElementById('t_intrest').innerHTML=0;
                                     else
-                                    document.getElementById('t_intrest').innerHTML="Total Intrest    :" +Number(Math.round((total-p)+'e2')+'e-2');
-                                    document.getElementById('t_amount').innerHTML= "Total Amount  :"+Number(Math.round(total+'e2')+'e-2');
+                                    document.getElementById('t_intrest').innerHTML=Number(Math.round((total-p)+'e2')+'e-2');
+                                    document.getElementById('t_amount').innerHTML= Number(Math.round(total+'e2')+'e-2');
+                                    pie(Number(Math.round((total-p)+'e2')+'e-2'), Number(Math.round(total+'e2')+'e-2') )
                                 }
-                            </script>
+                                function pie(a,b){
+                                    if(window.bar!=undefined)
+                                        window.bar.destroy();
+                                    let myChart  = document.getElementById("myCanvas").getContext('2d');
+                                    window.bar = new Chart(myChart, {
+                                    type : 'pie',
+                                    data : {
+                                    labels:['Intrest', 'Total Amount'],
+                                    datasets:[{
+                                    data:[a,b],
+                                    backgroundColor :['red','green'],}]
+                                    },
+                                })
+                                }
+                            </script><br>
                         
-                            
-                            <br>
-
-                        </div>
-                        
-                        
-                        <h4 class="form_font" id="emi"> EMI (monthly)&nbsp;: <b id="emi"><%= emi %></b> </h4><br>
-                        <h4 class="form_font" id="t_intrest"> Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;:<b id="emi"> <%= intrest %></b></h4><br>
-                        <h4 class="form_font" id=t_amount> Total Amount &nbsp;: <b id="emi"><%= total_amount %> </b></h4><br>
-                        
-                      
-                      
-    
-                </div>
+                    </div>
+                    <div>
+                        <h4 class="form_font" > EMI (monthly)&nbsp;: <b id="emi" ><%= emi %></b> </h4><br>
+                        <h4 class="form_font" > Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;:<b id="t_intrest"> <%= intrest %></b></h4><br>
+                        <h4 class="form_font" > Total Amount &nbsp;: <b id="t_amount"><%= total_amount %> </b></h4><br>
+                    </div>
             </div>
 
+        </div>
+        </div>
+
+        <div class="container well">
+            <div class="col-sm-4 col-md-offset-4 well">
+                    <canvas id="myCanvas" width="300" height="300"></canvas>
+                    <script>
+                        
+                        let myChart  = document.getElementById("myCanvas").getContext('2d');
+                        window.bar = new Chart(myChart, {
+                            type : 'pie',
+                            data : {
+                                labels:['Intrest', 'Total Amount'],
+                                datasets:[{
+                                    data:[<%= intrest %>,<%= total_amount %>],
+                                    backgroundColor :['red','green']
+                                }]
+                            }
+                        })
+                        
+                        
+                    </script>
+                
+            </div>
         </div>
     </body>
 </html>

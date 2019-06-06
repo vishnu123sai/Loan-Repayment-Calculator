@@ -6,6 +6,10 @@ body{
     background-color: #659dbd;
 
 }
+.well{
+    border-block-end-style: double;
+    border-radius: 1%;
+}
 .navbar-brand{
     font-size: 24px;
     font-family: "Pacifico";
@@ -13,8 +17,11 @@ body{
 }
 .navbar{
     border: 100px;
-    color: #979797;
-    padding: 0%;
+    
+    background-color: #f8f8f8;
+    background-clip: content-box;
+    border-radius: 0%;
+    
     /* background-image: linear-gradient(#659dbd, #2f2fa2) */
     
 }
