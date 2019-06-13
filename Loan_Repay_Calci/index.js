@@ -1,5 +1,6 @@
 var express = require("express")
 var fs = require("fs")
+var open = require('open')
 var body_parser = require("body-parser")
 var fun = require("./calculate_emi")
 var p=0,r=0,t=0;
@@ -13,6 +14,9 @@ app.set("view engine", "ejs");
 app.get("/", function(req,res){
     res.render("index")
 });
+app.get("/emi", function(req, res){
+    res.render("index");
+})
 app.post("/emi", urlencodedParser, function(req, res){
     p = req.body.loan_amount;
     t = req.body.period;
@@ -37,6 +41,9 @@ app.post("/emi", urlencodedParser, function(req, res){
     min : min,
     max : max
     })
+});
+app.get("/emi/student_tips", function(req, res){
+    res.render("student_tips")
 });
 
 
