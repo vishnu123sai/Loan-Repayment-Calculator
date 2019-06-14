@@ -4,8 +4,20 @@ body{
     /* background-color: #97caef */
     /* background-color: #2f2fa2   */
     background-color: #659dbd;
+    
+
 
 }
+#logo{
+    width: 400px;
+    height: 100px;
+    padding-left: 15px;
+}
+
+/* .row{
+    background-image: url("/static/img1.jpg")
+    background-color: #659dbd;
+} */
 .well{
     border-block-end-style: double;
     border-radius: 1%;
@@ -73,4 +85,7 @@ output{
     display: block;
     padding-top: 15px;
     padding-left: 0px;
+}
+.col-sm-5{
+    padding: 15px;
 }
