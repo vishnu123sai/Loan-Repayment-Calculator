@@ -136,9 +136,17 @@ output{
 .col-sm-5{
     padding: 15px;
 }
+.emi_sheet{
+    padding-left: 140px;
+}
 @media screen and (max-width: 700px) {
     #calc-contain{
         position: relative;
         margin: 0px auto;
+        width: 100%;
     }
+    .emi_sheet{
+        padding-left: 0px;
+    }
+    
 }
