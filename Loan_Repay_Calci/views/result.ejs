@@ -11,11 +11,59 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         <link rel="stylesheet", href="/static/style.css" type="text/css">
+        
     </head>
     <body>
         <nav class="navbar navbar-default text-center">
             <img id="logo" src="https://static.wixstatic.com/media/55c749_7243a1dcc9204ec38a5b27edc8f90fde~mv2_d_2400_1200_s_2.png/v1/fill/w_688,h_348,al_c,q_80,usm_0.66_1.00_0.01/55c749_7243a1dcc9204ec38a5b27edc8f90fde~mv2_d_2400_1200_s_2.webp">
         </nav>
+        <div class=" calculator text-right" >
+            <button class="btn btn-success" onclick="fun1()">Calculator</button><br><br>
+            <div id='calc-contain'>
+              <form name="calculator">
+                
+                <input type="text" name="answer" />
+                <br>
+                
+                <input type="button" value=" 1 " onclick="calculator.answer.value += '1'" />
+                <input type="button" value=" 2 " onclick="calculator.answer.value += '2'" />
+                <input type="button" value=" 3 " onclick="calculator.answer.value += '3'" />
+                <input type="button" value=" + " onclick="calculator.answer.value += '+'" />
+                <br/>
+                
+                <input type="button" value=" 4 " onclick="calculator.answer.value += '4'" />
+                <input type="button" value=" 5 " onclick="calculator.answer.value += '5'" />
+                <input type="button" value=" 6 " onclick="calculator.answer.value += '6'" />
+                <input type="button" value=" - " onclick="calculator.answer.value += '-'" />
+                </br>
+              
+                <input type="button" value=" 7 " onclick="calculator.answer.value += '7'" />
+                <input type="button" value=" 8 " onclick="calculator.answer.value += '8'" />
+                <input type="button" value=" 9 " onclick="calculator.answer.value += '9'" />
+                <input type="button" value=" x " onclick="calculator.answer.value += '*'" />
+                </br>
+            
+                <input type="button" value=" c " onclick="calculator.answer.value = ''" />
+                <input type="button" value=" 0 " onclick="calculator.answer.value += '0'" />
+                <input type="button" value=" = " onclick="calculator.answer.value = eval(calculator.answer.value)" />
+                <input type="button" value=" / " onclick="calculator.answer.value += '/'" />
+                </br>
+      
+        
+              </form>
+              
+            </div>
+            <script>
+                    function fun1(){
+                        var ele = document.getElementById("calc-contain").style.display;
+                        if(ele==="none")
+                        document.getElementById("calc-contain").style.display="block";
+                        else
+                        document.getElementById("calc-contain").style.display="none";
+                    }
+            </script>
+            
+        </div>
         <br>
         <div class="container ">
             <div class="row well">
@@ -115,11 +163,80 @@
                     </script>
                 
             </div>
-            <div class="col-sm-5 col-md-offset-1">
-                <h3><a href="emi/student_tips" style="color: black;font-family:sans-serif">Money Saving Tips in Foreign</a></h3><br>
-                <h3><a href="#" style="color: black;font-family:sans-serif">Expenses in USA and Canada</a></h3><br>
-                
+            <div class="col-sm-6 col-md-offset-1">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">S/No</th>
+                            <th scope="col">Period(in months)</th>
+                            <th scope="col">EMI</th>
+                            <th scope="col">Total Amount</th>
+                            <th scope="col">Intrest Amount</th>
+                      </tr>
+                        </thead>
+                        <tbody>
+                            <% var cnt=1 %>
+                            <% var p = principle_amount %>
+                            <% var r = intrest_rate %>
+                            <% var t = period - 24 %>
+                            <% var emis = 0 %>
+                            <% for(i=0;i<9;i++) { %>
+                                <tr class="text-center">
+                                    <% if(r>0) %>
+                                    <% emis = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t) %>
+                                    <% if(emis<0) %>
+                                    <% emis = -emis%>
+                                    <th scope="row"><%= cnt %></th>
+                                    <td><%= t %></td>
+                                    <td><%= Number(Math.round((emis)+'e2')+'e-2') %></td>
+                                    <td><%=  Number(Math.round((emis*t)+'e2')+'e-2')%></td>
+                                    <td><%=  Number(Math.round(((emis*t)-p)+'e2')+'e-2')%></td>
+                                </tr>
+                                <% cnt = Number(cnt)+1%>
+                                <% t=Number(t)+6%>
+                            <% } %>
+                        </tbody>
+                    </table>
             </div> 
+        </div>
+        <div class="container well text-center" style="padding: 80px;">
+                <table class="table text-center">
+                    <thead>
+                        <tr class="text-right">
+                            <th scope="col"> Month </th>
+                            <th scope="col"> Principle Loan Amount </th>
+                            <th scope="col"> Intrest </th>
+                            <th scope="col"> Principle Comp </th>
+                            <th scope="col"> Remaining Loan </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% var p = principle_amount %>
+                    <% var remain_loan = principle_amount %>
+                    <% var r = intrest_rate %>
+                    <% var t = period %>
+                    <% var emis = 0 %>
+                    <% emis = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t) %>
+                    <% if(emis<0)%>
+                    <% emis = -emis%>
+                    <% var intrest = p * (r/100) %>
+                    <% for(i=1;i<=t;i++) { %>
+                        <tr>
+                            <th scope="row"><%= i %></th>
+                            <td><%=Number(Math.round(p+'e2')+'e-2')%></td>
+                            <td><%= Number(Math.round((intrest/12)+'e2')+'e-2') %></td>
+                            <td><%=  Number(Math.round((emis-(intrest/12))+'e2')+'e-2')%></td>
+                            <% remain_loan = p-(emis-(intrest/12)) %>
+                            
+                            <td><%=  Number(Math.round(remain_loan+'e2')+'e-2')%></td>
+                        </tr>
+                        <% p = remain_loan %>
+                        <% intrest = p * (r/100) %>
+                        <% } %>
+                    </tbody>
+                </table>
+
+
         </div>
         
     </body>

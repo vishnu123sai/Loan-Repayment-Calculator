@@ -42,7 +42,7 @@ app.post("/emi", urlencodedParser, function(req, res){
     max : max
     })
 });
-app.get("/emi/student_tips", function(req, res){
+app.get("/student_tips", function(req, res){
     res.render("student_tips")
 });
 
