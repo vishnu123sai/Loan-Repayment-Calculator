@@ -45,6 +45,9 @@ app.post("/emi", urlencodedParser, function(req, res){
 app.get("/student_tips", function(req, res){
     res.render("student_tips")
 });
+app.get("/compare_indian_loans", function(req,res){
+    res.render("compare_bank_rates_i")
+});
 
 
 

@@ -15,7 +15,7 @@
     </head>
     <body>
         <nav class="navbar navbar-default text-center">
-            <img id="logo" src="https://static.wixstatic.com/media/55c749_7243a1dcc9204ec38a5b27edc8f90fde~mv2_d_2400_1200_s_2.png/v1/fill/w_688,h_348,al_c,q_80,usm_0.66_1.00_0.01/55c749_7243a1dcc9204ec38a5b27edc8f90fde~mv2_d_2400_1200_s_2.webp">
+            <a href="/"><img id="logo" src="https://static.wixstatic.com/media/55c749_7243a1dcc9204ec38a5b27edc8f90fde~mv2_d_2400_1200_s_2.png/v1/fill/w_688,h_348,al_c,q_80,usm_0.66_1.00_0.01/55c749_7243a1dcc9204ec38a5b27edc8f90fde~mv2_d_2400_1200_s_2.webp"></a>
         </nav>
         <div class=" calculator text-right" >
             <button class="btn btn-success" onclick="fun1()">Calculator</button><br><br>
@@ -88,7 +88,7 @@
                         <div class="slidecontainer">
                             <b class="text">Intrest Rate</b><br><br>
                             <form class="ranging" >
-                            <input type="range" min="<%= min %>" max="<%= max %>" step="0.25" name="range_slider" class="slider" 
+                            <input type="range" min="<%= min %>" max="<%= max %>" step="0.1" name="range_slider" class="slider" 
                             id="range_weight" value="<%= intrest_rate%>" oninput="range_weight_disp.value = range_weight.value" onchange="fun()">
                             <b><output  id="range_weight_disp"><%= intrest_rate%></output></b>
                             </form>
@@ -100,7 +100,7 @@
                                     var emi=0;
                                     if(r>0)
                                     emi = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t);
-                                    console.log(emi)
+                                    
                                     if(emi<0)
                                     {
                                         emi = -emi;
@@ -179,6 +179,9 @@
                             <% var p = principle_amount %>
                             <% var r = intrest_rate %>
                             <% var t = period - 24 %>
+                            <% if(t<=0) { %>
+                            <% t=6 %>
+                            <% }  %>
                             <% var emis = 0 %>
                             <% for(i=0;i<9;i++) { %>
                                 <tr class="text-center">
