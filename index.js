@@ -1,27 +1,30 @@
 var express = require("express")
 var fs = require("fs")
 var open = require('open')
-var mongoose  = require("mongoose")
 var body_parser = require("body-parser")
+const mongoose = require("mongoose");
 var fun = require("./calculate_emi")
 var p=0,r=0,t=0;
 
 var urlencodedParser = body_parser.urlencoded({ extended: false })
 var app  = express();
 
-var mongo_url = "mongodb+srv://dbuser:dbuser@cluster0-gouvv.gcp.mongodb.net/bank?retryWrites=true&w=majority";
+// mongodb connection
+var mangodb = "mongodb+srv://dbuser:dbuser@cluster0-gouvv.gcp.mongodb.net/bank?retryWrites=true&w=majority";
+mongoose.connect(mangodb);
 
-mongoose.connect(mongo_url)
+// create schema
 var Schema = mongoose.Schema;
 
-var bank_detail = new Schema({
-	bank_name : String,
-	bank_intrest_rate : Number
+var DetailsSchema = new Schema({
+    bank_name: String,
+    bank_intrest_rate:Number,
+    class:String
+
 });
 
-var bankDetails = mongoose.model("banking_intrest_rates", bank_detail);
- 
-
+// creating model with above schema
+var Details = mongoose.model('banking_intrest_rates', DetailsSchema); // details is the name of the collection in the model
 
 
 app.use("/static", express.static("static"));
@@ -62,20 +65,22 @@ app.get("/student_tips", function(req, res){
     res.render("student_tips")
 });
 app.get("/compare_indian_loans", function(req,res){
-	bankDetails.find({},function(err,data){
-	if(err) throw err;
-	console.log(data);
-	res.render("compare_bank_rates_i", {data : data})
-})
-	
+    let loan_data;
+    Details.find({}, function(err, data){
+        loan_data = data;
+        if(err) throw err;
+        for(i=0;i<data.length;i++)
+        console.log(data[i].bank_name,data[i])
+
+        res.render("compare_bank_rates_i", {data : loan_data})
+    }).sort({bank_intrest_rate:1 })
 });
 
 
 
 
 
-var server  = app.listen(3000);
+var port  = process.env.PORT || 8080;
+console.log(port);
 
-var host  = server.address().address;
-var port  = server.address().port;
-console.log("Server is up and running on http://%s:%s", host,port);
+var server  = app.listen(port);

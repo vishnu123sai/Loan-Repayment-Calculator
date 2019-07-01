@@ -48,7 +48,7 @@
                     <input type="number" min="1" class="form-control" id="loan_amount" required>
                     <label class="form_font"> Loan Duration (in months):</label><br>
                     <input type="number" min="1" class="form-control" id="loan_duration" placeholder="Default 60 Months" required><br>
-                    <button class="btn btn-success" name="submit" onclick="banks()" >Submit</button>
+                    <button class="btn btn-success" name="submit" onclick="banks()">Submit</button>
                 </div><br>
                 <script>
                     function banks(){
@@ -74,13 +74,9 @@
                                 ele[i].innerText = t;
                             }
                             
-                            if(p>750000){
-                            r = document.getElementById('sbi_irate').innerHTML;
-                            }
-                            else{
-                                r=10.25;
-                                document.getElementById('sbi_irate').innerHTML = r;
-                            }
+                        
+                            var r = document.getElementById('sbi_irate').innerHTML;
+                            console.log(r)
                             var emis = emi(p,t,r);
                             document.getElementById('sbi_emi').innerHTML= emis;
                             document.getElementById('sbi_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
@@ -90,18 +86,12 @@
                             document.getElementById('hdfc_emi').innerHTML= emis;
                             document.getElementById('hdfc_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
-                            r = document.getElementById('kmb_irate').innerHTML;
+                            r = document.getElementById('kotak_irate').innerHTML;
                             var emis = emi(p,t,r);
-                            document.getElementById('kmb_emi').innerHTML= emis;
-                            document.getElementById('kmb_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            
-                            if(p>750000){
+                            document.getElementById('kotak_emi').innerHTML= emis;
+                            document.getElementById('kotak_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+
                             r = document.getElementById('canara_irate').innerHTML;
-                            }
-                            else{
-                            r=10.40;
-                            document.getElementById('canara_irate').innerHTML= r;
-                            }
                             var emis = emi(p,t,r);
                             document.getElementById('canara_emi').innerHTML= emis;
                             document.getElementById('canara_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
@@ -111,13 +101,7 @@
                             document.getElementById('bob_emi').innerHTML= emis;
                             document.getElementById('bob_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
-                            if(p>750000){
                             r = document.getElementById('axis_irate').innerHTML;
-                            }
-                            else{
-                                r=14.70;
-                                document.getElementById('axis_irate').innerHTML=r;
-                            }
                             var emis = emi(p,t,r);
                             document.getElementById('axis_emi').innerHTML= emis;
                             document.getElementById('axis_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
@@ -169,95 +153,28 @@
                                 <tr>
                                     <th scope="col"> S/No </th>
                                     <th scope="col"> Bank </th>
-                                    <th scope="col"> Intrest Rate </th>
+                                    <th scope="col"> Intrest Rate <button ><span id = "sort" class="glyphicon glyphicon-arrow-down"></span></button> </th>
                                     <th scope="col"> Priciple Amount</th>
                                     <th scope="col"> Period (in months)</th>
-                                    <th scope="col">EMI </th>
+                                    <th scope="col"> EMI </th>
                                     <th scope="col"> Total Amount </th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <% for(var i=0;i<=data.length-1;i++) { %>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td><b>SBI Bank</b></td>
-                                    <td><b id="sbi_irate">10.50</b>%</td>
+                                    <th scope="row"><%= i+1 %></th>
+                                    <td><b><%= data[i].bank_name %></b></td>
+                                    <% var a = data[i].class+'_irate' %>
+                                    <td><b id="<%=a%>"><%= data[i].bank_intrest_rate %></b>%</td>
                                     <td><b class="p_a"></b></td>
                                     <td><b class="p_t"></b></td>
-                                    <td><b id="sbi_emi"></b></td>
-                                    <td><b id="sbi_total"></b></td>
+                                    <% var b = data[i].class+'_emi' %>
+                                    <td><b id="<%= b %>"></b></td>
+                                    <% var c = data[i].class+'_total' %>
+                                    <td><b id="<%= c %>"></b></td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td><b>HDFC Bank</b></td>
-                                    <td><b id="hdfc_irate">11.57</b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <td><b id="hdfc_emi"></b></td>
-                                    <td><b id="hdfc_total"></b></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td><b>Kotak Mahindra Bank</b></td>
-                                    <td><b id="kmb_irate">11.50</b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <td><b id="kmb_emi"></b></td>                                        
-                                    <td><b id="kmb_total"></b></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td><b>Canara Bank</b></td>
-                                    <td><b id="canara_irate">10.20</b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <td><b id="canara_emi"></b></td>
-                                    <td><b id="canara_total"></b></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td><b>Bank of Baroda</b></td>
-                                    <td><b id="bob_irate">11</b>% (apprx.)</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <td><b id="bob_emi"></b></td>
-                                    <td><b id="bob_total"></b></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td><b>Axis Bank</b></td>
-                                    <td><b id="axis_irate">13.70</b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <td><b id="axis_emi"></b></td>
-                                    <td><b id="axis_total"></b></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td><b>ICICI Bank</b></td>
-                                    <td><b id="icici_irate">11.50</b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <td><b id="icici_emi"></b></td>
-                                    <td><b id="icici_total"></b></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td><b>Punjab National Bank</b></td>
-                                    <td><b id="pnb_irate">10.30</b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <td><b id="pnb_emi"></b></td>
-                                    <td><b id="pnb_total"></b></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td><b>Bank of India</b></td>
-                                    <td><b id="boi_irate">11.15</b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <td><b id="boi_emi"></b></td>
-                                    <td><b id="boi_total"></b></td>
-                                </tr>
+                                <% } %>
                                 
                             </tbody>
     
