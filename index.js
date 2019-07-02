@@ -36,6 +36,7 @@ app.get("/", function(req,res){
 app.get("/emi", function(req, res){
     res.render("index");
 })
+
 app.post("/emi", urlencodedParser, function(req, res){
     p = req.body.loan_amount;
     t = req.body.period;
@@ -74,6 +75,10 @@ app.get("/compare_indian_loans", function(req,res){
 
         res.render("compare_bank_rates_i", {data : loan_data})
     }).sort({bank_intrest_rate:1 })
+});
+
+app.get("/bank_rates", function(req, res){
+    res.render("views/bank_rates");
 });
 
 
