@@ -192,6 +192,7 @@ output{
     height: auto;
     max-height: 100px;
     overflow-x: hidden;
+    padding: 1%;
 }
 
 .td-interest-rate{

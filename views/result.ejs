@@ -157,113 +157,37 @@
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"style="width:100%">
                                     Select Bank                 
                                 <span class="caret"></span></button>
-                                <ul class="dropdown-menu" style="padding: 1%">
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <th class="td-interest-rate" style="width: 60%;">List of Banks</th>
-                                            <th class="td-interest-rate" style="width: 40%;">Interest rate</th>
-                                        </thead>
-                                        
-                                        <tbody>
-                                            <tr>
-                                                <a href="/bank_rates"><td class="td-interest-rate" >State Bank of India </td></a>
-                                                <td class="td-interest-rate">12.6</td>
-                                            </tr>
-
-                        <!-- TODO: Once the modal is designed for the SBI then we will implement to all the banks -->
-                                            <tr>
-                                                <a href="#">
-                                                    <td>ICICI Bank </td>
-                                                    <td>11.2</td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                            <tr>
-                                                <a href="">
-                                                    <td></td>
-                                                    <td></td>
-                                                </a>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">List of Banks <span style="float: right;">Interest rates</span> </li>
+                                        <li><a data-toggle="modal" data-target="#myModal">HTML <span style="float: right;">12.5%</span> </a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
                                 </ul>
+                                    <!-- Start of Modal -->
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">State Bank of India</h4>
+                                            </div>
+                                            <div class="modal-body" style="padding-right:2%; padding-left: 2%">
+                                                <ul style="list-style-type: none; padding-right:5%; padding-left: 5%">
+                                                    <li>EMI: <span style="float: right;">255</span> </li>
+                                                    <li>Total Interest: <span style="float: right;">12500</span> </li>
+                                                    <li>Total Amount: <span style="float: right;">23680</span> </li>
+                                                    <li>Principal Amount: <span style="float: right;">30000</span> </li>
+                                                </ul>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                        <!-- End of Modal -->
                             </div>
                         </div>
                     </div>
