@@ -51,16 +51,21 @@ app.post("/emi", urlencodedParser, function(req, res){
     if(r>0 && (Number(r)-5)>0)
     min = Number(r)-5;
     var max = Number(r)+5;
-    
-    res.render("result",{emi : Number(Math.round(emi+'e2')+'e-2'),
-    intrest : Number(Math.round(intrest+'e2')+'e-2'),
-    total_amount : Number(Math.round(total_amount+'e2')+'e-2'),
-    intrest_rate : r,
-    principle_amount:p,
-    period : t,
-    min : min,
-    max : max
-    })
+    let loan_data;
+    Details.find({}, function(err, data){
+        loan_data = data;
+        if(err) throw err;
+        res.render("result",{emi : Number(Math.round(emi+'e2')+'e-2'),
+        intrest : Number(Math.round(intrest+'e2')+'e-2'),
+        total_amount : Number(Math.round(total_amount+'e2')+'e-2'),
+        intrest_rate : r,
+        principle_amount:p,
+        period : t,
+        min : min,
+        max : max,
+        data: loan_data
+        })
+    });
 });
 app.get("/student_tips", function(req, res){
     res.render("student_tips")

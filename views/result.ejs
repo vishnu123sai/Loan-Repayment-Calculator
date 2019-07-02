@@ -95,14 +95,14 @@
                     <div class="row">
                         <div class="col align-self-center well">
                             <div class="slidecontainer">
-                                    <b class="text">Interest Rate hello</b><br>
+                                    <b class="text">Interest Rate</b><br>
                                     <form class="ranging" >
                                         <div style="display: flex; flex-direction: row">
-                                            <div style="width: 80%; padding-top: 22px">
+                                            <div style="width: 60%; padding-top: 22px">
                                                 <input type="range" min="<%= min %>" max="<%= max %>" step="0.1" name="range_slider" class="slider" 
-                                                id="range_weight" value="<%= intrest_rate%>" oninput="range_weight_disp.value = range_weight.value" onchange="fun()">
+                                                id="range_weight" value="<%= intrest_rate%>" oninput="range_weight_disp.value = range_weight.value" onchange="fun()">&nbsp;&nbsp;&nbsp;
                                             </div>
-                                            <div style="width: 20%; text-align: center; padding-top: 12px">
+                                            <div style="width: 20%;padding-top: 12px">
                                                 <b><output  id="range_weight_disp"><%= intrest_rate%></output></b>
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                             },
                                         })
                                         }
-                                    </script><br>
+                                    </script>
                                 
                             </div>
                             <div>
@@ -151,17 +151,20 @@
                                 <h4 class="form_font" > Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;:<b id="t_intrest"> <%= intrest %></b></h4>
                                 <h4 class="form_font" > Total Amount &nbsp;: <b id="t_amount"><%= total_amount %> </b></h4>
                             </div>
-                        </div>
-                        <div class="col align-self-center well">
+                        </div><br>
+                        <div class="col align-self-center">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"style="width:100%">
                                     Select Bank                 
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li class="dropdown-header">List of Banks <span style="float: right;">Interest rates</span> </li>
-                                        <li><a data-toggle="modal" data-target="#myModal">HTML <span style="float: right;">12.5%</span> </a></li>
-                                        <li><a href="#">CSS</a></li>
-                                        <li><a href="#">JavaScript</a></li>
+                                    <li class="dropdown-header"><b>List of Banks</b><span style="float: right;"><b>Interest rates</b></span> </li>
+                                        <% for(i=0;i<data.length;i++) { %>
+                                            <% var a  = data[i].class+"_bank_name" %>
+                                            <% var b  = data[i].class+"_bank_irate" %>
+                                            <li><a data-toggle="modal" id="<%= data[i].class %>" data-target="#myModal" href="javascript:" onclick="return drop_down(this.id)"><b id="<%= a %>" ><%= data[i].bank_name %></b><span style="float: right;"><b id="<%= b %>"><%= data[i].bank_intrest_rate %></b>%</span> </a></li>
+                                        <% } %>
+                                        
                                 </ul>
                                     <!-- Start of Modal -->
                                 <div id="myModal" class="modal fade" role="dialog">
@@ -170,24 +173,48 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">State Bank of India</h4>
+                                                <h4 class="modal-title" id = "modal_header" style="font-weight: bold"></h4>
                                             </div>
                                             <div class="modal-body" style="padding-right:2%; padding-left: 2%">
                                                 <ul style="list-style-type: none; padding-right:5%; padding-left: 5%">
-                                                    <li>EMI: <span style="float: right;">255</span> </li>
-                                                    <li>Total Interest: <span style="float: right;">12500</span> </li>
-                                                    <li>Total Amount: <span style="float: right;">23680</span> </li>
-                                                    <li>Principal Amount: <span style="float: right;">30000</span> </li>
+                                                    <li><h4>Principal Amount: <b id="modal_p"></b><span style="float: right;"></span></h4></li>
+                                                    <li><h4>EMI (monthly): <b id="modal_emi"></b><span style="float: right;"></span></h4></li>
+                                                    <li><h4>Total Interest: <b id="modal_intrest"></b><span style="float: right;"></span></h4></li>
+                                                    <li><h4>Total Amount: <b id="modal_total"></b><span style="float: right;"></span></h4></li>
+                                                    
                                                 </ul>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            </div>
+                                            
                                         </div>
                                         
                                     </div>
                                 </div>
                                         <!-- End of Modal -->
+                                    
+                                <script type='text/javascript'>
+                                    function drop_down(id){
+                                        console.log(id)
+                                        var bn = id+"_bank_name";
+                                        var br = id+"_bank_irate";
+                                        var bankName = document.getElementById(bn).innerHTML;
+                                        console.log(bankName);
+                                        var r = document.getElementById(br).innerHTML;
+                                        var p = <%= principle_amount %>;
+                                        var t = <%= period %>;
+                                        var emi=0;
+                                        emi = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t)
+                                        if(emi<0) {
+                                            emi = -emi
+                                        };
+                                        var total  = emi*t;
+                                        var i = total -p ;
+                                        document.getElementById("modal_header").innerHTML = bankName;
+                                        document.getElementById("modal_p").innerHTML = p;
+                                        document.getElementById("modal_intrest").innerHTML = Number(Math.round((i)+'e2')+'e-2');
+                                        document.getElementById("modal_emi").innerHTML = Number(Math.round((emi)+'e2')+'e-2');
+                                        document.getElementById("modal_total").innerHTML = Number(Math.round((total)+'e2')+'e-2');
+                                    }
+                                </script>   
                             </div>
                         </div>
                     </div>
