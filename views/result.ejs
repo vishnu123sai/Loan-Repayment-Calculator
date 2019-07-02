@@ -20,6 +20,7 @@
         <div class=" calculator text-right" >
             <button class="btn btn-success" onclick="fun1()">Calculator</button><br><br>
             <div id='calc-contain'>
+                <!-- start Calculator  -->
               <form name="calculator">
                 
                 <input type="text" name="answer" />
@@ -51,6 +52,8 @@
       
         
               </form>
+
+              <!-- end calculator -->
               
             </div>
             <script>
@@ -65,9 +68,12 @@
             
         </div>
         <br>
-        <div class="container ">
+<!-- start Top container -->
+        <div class="container">
             <div class="row well">
+                <!-- Heading -->
                 <h3 class="text-center"><b>Principal Amount : <%= principle_amount %></b></h3><br>
+    <!-- start Principal generator -->
                 <div class="col-sm-4 col-md-offset-1 well">
                     <form method="POST" id="loan_form" action="/emi">
                         <label class="form_font"> Principal Amount :</label><br>
@@ -83,65 +89,191 @@
                     
 
                 </div>
-                
-                <div class="col-sm-5 col-md-offset-1 well" >
-                        
-                        <div class="slidecontainer">
-                            <b class="text">Intrest Rate</b><br><br>
-                            <form class="ranging" >
-                            <input type="range" min="<%= min %>" max="<%= max %>" step="0.1" name="range_slider" class="slider" 
-                            id="range_weight" value="<%= intrest_rate%>" oninput="range_weight_disp.value = range_weight.value" onchange="fun()">
-                            <b><output  id="range_weight_disp"><%= intrest_rate%></output></b>
-                            </form>
-                            <script >
-                                function fun(){
-                                    var r = document.getElementById("range_weight_disp").innerHTML;
-                                    var p = <%= principle_amount %>;
-                                    var t = <%= period %>;
-                                    var emi=0;
-                                    if(r>0)
-                                    emi = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t);
-                                    
-                                    if(emi<0)
-                                    {
-                                        emi = -emi;
-                                    }
-                                    var total = emi*t;
-                                    document.getElementById('emi').innerHTML=Number(Math.round(emi+'e2')+'e-2') ;
-                                    if(emi === 0)
-                                    document.getElementById('t_intrest').innerHTML=0;
-                                    else
-                                    document.getElementById('t_intrest').innerHTML=Number(Math.round((total-p)+'e2')+'e-2');
-                                    document.getElementById('t_amount').innerHTML= Number(Math.round(total+'e2')+'e-2');
-                                    pie(Number(Math.round((total-p)+'e2')+'e-2'),<%= principle_amount %>)
-                                }
-                                function pie(a,b){
-                                    if(window.bar!=undefined)
-                                        window.bar.destroy();
-                                    let myChart  = document.getElementById("myCanvas").getContext('2d');
-                                    window.bar = new Chart(myChart, {
-                                    type : 'pie',
-                                    data : {
-                                    labels:['Intrest', 'Priciple Amount'],
-                                    datasets:[{
-                                    data:[a,b],
-                                    backgroundColor :['red','green'],}]
-                                    },
-                                })
-                                }
-                            </script><br>
-                        
+    <!-- end Principal generator -->
+    <!-- Start Interest rate -->
+                <div class="col-sm-5 col-md-offset-1" >  
+                    <div class="row">
+                        <div class="col align-self-center well">
+                            <div class="slidecontainer">
+                                    <b class="text">Interest Rate hello</b><br>
+                                    <form class="ranging" >
+                                        <div style="display: flex; flex-direction: row">
+                                            <div style="width: 80%; padding-top: 22px">
+                                                <input type="range" min="<%= min %>" max="<%= max %>" step="0.1" name="range_slider" class="slider" 
+                                                id="range_weight" value="<%= intrest_rate%>" oninput="range_weight_disp.value = range_weight.value" onchange="fun()">
+                                            </div>
+                                            <div style="width: 20%; text-align: center; padding-top: 12px">
+                                                <b><output  id="range_weight_disp"><%= intrest_rate%></output></b>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <script >
+                                        function fun(){
+                                            var r = document.getElementById("range_weight_disp").innerHTML;
+                                            var p = <%= principle_amount %>;
+                                            var t = <%= period %>;
+                                            var emi=0;
+                                            if(r>0)
+                                            emi = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t);
+                                            
+                                            if(emi<0)
+                                            {
+                                                emi = -emi;
+                                            }
+                                            var total = emi*t;
+                                            document.getElementById('emi').innerHTML=Number(Math.round(emi+'e2')+'e-2') ;
+                                            if(emi === 0)
+                                            document.getElementById('t_intrest').innerHTML=0;
+                                            else
+                                            document.getElementById('t_intrest').innerHTML=Number(Math.round((total-p)+'e2')+'e-2');
+                                            document.getElementById('t_amount').innerHTML= Number(Math.round(total+'e2')+'e-2');
+                                            pie(Number(Math.round((total-p)+'e2')+'e-2'),<%= principle_amount %>)
+                                        }
+                                        function pie(a,b){
+                                            if(window.bar!=undefined)
+                                                window.bar.destroy();
+                                            let myChart  = document.getElementById("myCanvas").getContext('2d');
+                                            window.bar = new Chart(myChart, {
+                                            type : 'pie',
+                                            data : {
+                                            labels:['Intrest', 'Priciple Amount'],
+                                            datasets:[{
+                                            data:[a,b],
+                                            backgroundColor :['red','green'],}]
+                                            },
+                                        })
+                                        }
+                                    </script><br>
+                                
+                            </div>
+                            <div>
+                                <h4 class="form_font" > EMI (monthly)&nbsp;: <b id="emi" ><%= emi %></b> </h4>
+                                <h4 class="form_font" > Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;:<b id="t_intrest"> <%= intrest %></b></h4>
+                                <h4 class="form_font" > Total Amount &nbsp;: <b id="t_amount"><%= total_amount %> </b></h4>
+                            </div>
+                        </div>
+                        <div class="col align-self-center well">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"style="width:100%">
+                                    Select Bank                 
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu" style="padding: 1%">
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <th class="td-interest-rate" style="width: 60%;">List of Banks</th>
+                                            <th class="td-interest-rate" style="width: 40%;">Interest rate</th>
+                                        </thead>
+                                        
+                                        <tbody>
+                                            <tr>
+                                                <a href="/bank_rates"><td class="td-interest-rate" >State Bank of India </td></a>
+                                                <td class="td-interest-rate">12.6</td>
+                                            </tr>
+
+                        <!-- TODO: Once the modal is designed for the SBI then we will implement to all the banks -->
+                                            <tr>
+                                                <a href="#">
+                                                    <td>ICICI Bank </td>
+                                                    <td>11.2</td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                            <tr>
+                                                <a href="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </a>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="form_font" > EMI (monthly)&nbsp;: <b id="emi" ><%= emi %></b> </h4><br>
-                        <h4 class="form_font" > Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;:<b id="t_intrest"> <%= intrest %></b></h4><br>
-                        <h4 class="form_font" > Total Amount &nbsp;: <b id="t_amount"><%= total_amount %> </b></h4><br>
-                    </div>
-            </div>
+                </div>
+    <!-- End Interest rate -->
            
 
+            </div>
         </div>
-        </div>
+<!-- End Top container -->
 
         <div class="container well">
             <div class="col-sm-4 col-md-offset-1 well">

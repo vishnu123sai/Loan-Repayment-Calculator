@@ -94,6 +94,7 @@ input[type = text] {
 
 .form_font{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2px;
 }
 
 .slider {
@@ -128,7 +129,7 @@ input[type = text] {
 
 input[type=range] {
     
-    width: 60%;
+    width: 100%;
 }
 
 .col-sm-4{
@@ -136,13 +137,12 @@ input[type=range] {
 }
 output{
     font-style: inherit;
-    display: block;
-    padding-top: 15px;
-    padding-left: 0px;
 }
-.col-sm-5{
+/* .col-sm-5{
     padding: 15px;
-}
+
+    // commenting becz we seeing this container is moving downword comparied to the priciple ammount container
+} */
 .emi_sheet{
     padding-left: 140px;
 }
@@ -179,4 +179,21 @@ output{
     }
     
     
+}
+
+
+/* Bootstrap class */
+.well{
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+    overflow-x: hidden;
+}
+
+.td-interest-rate{
+    text-align: center;
 }
