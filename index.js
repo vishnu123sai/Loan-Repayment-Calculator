@@ -3,6 +3,8 @@ var fs = require("fs")
 var open = require('open')
 var body_parser = require("body-parser")
 const mongoose = require("mongoose");
+var nodemailer = require('nodemailer');
+var ObjectID = require('mongodb').ObjectID;
 var fun = require("./calculate_emi")
 var p=0,r=0,t=0;
 
@@ -11,11 +13,14 @@ var app  = express();
 
 // mongodb connection
 var mangodb = "mongodb+srv://dbuser:dbuser@cluster0-gouvv.gcp.mongodb.net/bank?retryWrites=true&w=majority";
-mongoose.connect(mangodb);
+mongoose.connect(mangodb,{ useNewUrlParser: true });
 
+// to aviod deprecation warning while creating index 
+mongoose.set('useCreateIndex', true)
 // create schema
 var Schema = mongoose.Schema;
 
+// bank intrest rates schema
 var DetailsSchema = new Schema({
     bank_name: String,
     bank_intrest_rate:Number,
@@ -23,9 +28,33 @@ var DetailsSchema = new Schema({
 
 });
 
-// creating model with above schema
-var Details = mongoose.model('banking_intrest_rates', DetailsSchema); // details is the name of the collection in the model
+// candidates schema
+var CandidateSchema = new Schema({
+    first_name : String,
+    last_name : String,
+    email : String,
+    mobile_no : Number,
+    country_intrested : String
 
+})
+// making index to avoid duplicates 
+CandidateSchema.index({email : 1},{unique: true})
+
+// creating model with banking intrest  schema
+var Details = mongoose.model('banking_intrest_rates', DetailsSchema); // details is the name of the collection in the model
+// creating model for candidate details
+var Candidates = mongoose.model('contact_details', CandidateSchema);
+
+// setting email 
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'foreignadmits1@gmail.com',
+      pass: 'Foreignadmits1@' // need to pass from env variables in real time 
+    }
+  });
+  
 
 app.use("/static", express.static("static"));
 app.set("view engine", "ejs");
@@ -82,9 +111,48 @@ app.get("/compare_indian_loans", function(req,res){
     }).sort({bank_intrest_rate:1 })
 });
 
-app.get("/bank_rates", function(req, res){
-    res.render("views/bank_rates");
+app.get("/emi/apply-loan", function(req, res){
+    res.render("apply_bank_loan", {bol:false});
 });
+
+app.post("/emi/apply-loan",urlencodedParser, function(req, res){
+    var email_id = req.body.email;
+    var fname = req.body.fname;
+    var lname = req.body.lname;
+    var candidate = fname+" "+lname;
+    var mobile_number = req.body.pno;
+    var country = req.body.countries;
+    var candidate_pushtodb = new Candidates({
+        first_name : fname,
+        last_name : lname,
+        email : email_id,
+        mobile_no : mobile_number,
+        country_intrested : country
+    });
+    
+    candidate_pushtodb.save(function (err, result_candi) {
+        if (err) return console.error(err);
+            console.log(result_candi.first_name+" "+result_candi.last_name + " is pushed to contact_details collection.");
+    });
+    var mailOptions = {
+        from: 'foreignadmits1@gmail.com',
+        to: email_id,
+        subject: 'Thanks for contacting foreignadmits',
+        html: '<h4>Dear '+ candidate +'</h4><p>Thanks for consulting \
+        Foreign admits.</p>\n\n<p>Foreign admits '+ country +' counslting officer will\
+        contact you shortly.</p>\n\n<p>Regards,<br><b>Foreign Admits</b><br>\
+        foreignadmits1@gmail.com</p>'
+      }
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    res.render("apply_bank_loan", {bol:true});
+});
+
 
 
 

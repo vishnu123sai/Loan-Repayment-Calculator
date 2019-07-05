@@ -23,31 +23,31 @@
                 <!-- start Calculator  -->
               <form name="calculator">
                 
-                <input type="text" name="answer" />
+                <input type="text" id="ans" name="answer" />
                 <br>
                 
-                <input type="button" value=" 1 " onclick="calculator.answer.value += '1'" />
-                <input type="button" value=" 2 " onclick="calculator.answer.value += '2'" />
-                <input type="button" value=" 3 " onclick="calculator.answer.value += '3'" />
-                <input type="button" value=" + " onclick="calculator.answer.value += '+'" />
+                <input type="button" id="btn" value=" 1 " onclick="calculator.answer.value += '1'" />
+                <input type="button" id="btn" value=" 2 " onclick="calculator.answer.value += '2'" />
+                <input type="button" id="btn" value=" 3 " onclick="calculator.answer.value += '3'" />
+                <input type="button" id="btn" value=" + " onclick="calculator.answer.value += '+'" />
                 <br/>
                 
-                <input type="button" value=" 4 " onclick="calculator.answer.value += '4'" />
-                <input type="button" value=" 5 " onclick="calculator.answer.value += '5'" />
-                <input type="button" value=" 6 " onclick="calculator.answer.value += '6'" />
-                <input type="button" value=" - " onclick="calculator.answer.value += '-'" />
+                <input type="button" id="btn" value=" 4 " onclick="calculator.answer.value += '4'" />
+                <input type="button" id="btn" value=" 5 " onclick="calculator.answer.value += '5'" />
+                <input type="button" id="btn" value=" 6 " onclick="calculator.answer.value += '6'" />
+                <input type="button" id="btn" value=" - " onclick="calculator.answer.value += '-'" />
                 </br>
               
-                <input type="button" value=" 7 " onclick="calculator.answer.value += '7'" />
-                <input type="button" value=" 8 " onclick="calculator.answer.value += '8'" />
-                <input type="button" value=" 9 " onclick="calculator.answer.value += '9'" />
-                <input type="button" value=" x " onclick="calculator.answer.value += '*'" />
+                <input type="button" id="btn" value=" 7 " onclick="calculator.answer.value += '7'" />
+                <input type="button" id="btn" value=" 8 " onclick="calculator.answer.value += '8'" />
+                <input type="button" id="btn" value=" 9 " onclick="calculator.answer.value += '9'" />
+                <input type="button" id="btn" value=" x " onclick="calculator.answer.value += '*'" />
                 </br>
             
-                <input type="button" value=" c " onclick="calculator.answer.value = ''" />
-                <input type="button" value=" 0 " onclick="calculator.answer.value += '0'" />
-                <input type="button" value=" = " onclick="calculator.answer.value = eval(calculator.answer.value)" />
-                <input type="button" value=" / " onclick="calculator.answer.value += '/'" />
+                <input type="button" id="btn" value=" c " onclick="calculator.answer.value = ''" />
+                <input type="button" id="btn" value=" 0 " onclick="calculator.answer.value += '0'" />
+                <input type="button" id="btn" value=" = " onclick="calculator.answer.value = eval(calculator.answer.value)" />
+                <input type="button" id="btn" value=" / " onclick="calculator.answer.value += '/'" />
                 </br>
       
         
@@ -95,7 +95,7 @@
                     <div class="row">
                         <div class="col align-self-center well">
                             <div class="slidecontainer">
-                                    <b class="text">Interest Rate</b><br>
+                                    <b class="text" style="font-size: 18px">Interest Rate</b><br>
                                     <form class="ranging" >
                                         <div style="display: flex; flex-direction: row">
                                             <div style="width: 60%; padding-top: 22px">
@@ -148,7 +148,7 @@
                             </div>
                             <div>
                                 <h4 class="form_font" > EMI (monthly)&nbsp;: <b id="emi" ><%= emi %></b> </h4>
-                                <h4 class="form_font" > Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;:<b id="t_intrest"> <%= intrest %></b></h4>
+                                <h4 class="form_font" > Total Intrest&nbsp;&nbsp;&nbsp;&nbsp;: <b id="t_intrest"> <%= intrest %></b></h4>
                                 <h4 class="form_font" > Total Amount &nbsp;: <b id="t_amount"><%= total_amount %> </b></h4>
                             </div>
                         </div><br>
@@ -183,6 +183,9 @@
                                                     <li><h4>Total Amount: <b id="modal_total"></b><span style="float: right;"></span></h4></li>
                                                     
                                                 </ul>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="/emi/apply-loan"><button type="button" class="btn btn-success">Apply for Loan</button></a>
                                             </div>
                                             
                                         </div>

@@ -80,46 +80,64 @@
                             var emis = emi(p,t,r);
                             document.getElementById('sbi_emi').innerHTML= emis;
                             document.getElementById('sbi_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('sbi_emi_d').innerHTML= emis;
+                            document.getElementById('sbi_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
                             r = document.getElementById('hdfc_irate').innerHTML;
                             var emis = emi(p,t,r);
                             document.getElementById('hdfc_emi').innerHTML= emis;
                             document.getElementById('hdfc_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('hdfc_emi_d').innerHTML= emis;
+                            document.getElementById('hdfc_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
                             r = document.getElementById('kotak_irate').innerHTML;
                             var emis = emi(p,t,r);
                             document.getElementById('kotak_emi').innerHTML= emis;
                             document.getElementById('kotak_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('kotak_emi_d').innerHTML= emis;
+                            document.getElementById('kotak_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
 
                             r = document.getElementById('canara_irate').innerHTML;
                             var emis = emi(p,t,r);
                             document.getElementById('canara_emi').innerHTML= emis;
                             document.getElementById('canara_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('canara_emi_d').innerHTML= emis;
+                            document.getElementById('canara_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
                             r = document.getElementById('bob_irate').innerHTML;
                             var emis = emi(p,t,r);
                             document.getElementById('bob_emi').innerHTML= emis;
                             document.getElementById('bob_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('bob_emi_d').innerHTML= emis;
+                            document.getElementById('bob_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
                             r = document.getElementById('axis_irate').innerHTML;
                             var emis = emi(p,t,r);
                             document.getElementById('axis_emi').innerHTML= emis;
                             document.getElementById('axis_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('axis_emi_d').innerHTML= emis;
+                            document.getElementById('axis_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
                             r = document.getElementById('icici_irate').innerHTML;
                             var emis = emi(p,t,r);
                             document.getElementById('icici_emi').innerHTML= emis;
                             document.getElementById('icici_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('icici_emi_d').innerHTML= emis;
+                            document.getElementById('icici_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
                             r = document.getElementById('pnb_irate').innerHTML;
                             var emis = emi(p,t,r);
                             document.getElementById('pnb_emi').innerHTML= emis;
                             document.getElementById('pnb_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('pnb_emi_d').innerHTML= emis;
+                            document.getElementById('pnb_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                             
                             r = document.getElementById('boi_irate').innerHTML;
                             var emis = emi(p,t,r);
                             document.getElementById('boi_emi').innerHTML= emis;
                             document.getElementById('boi_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                            document.getElementById('boi_emi_d').innerHTML= emis;
+                            document.getElementById('boi_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
                         }
                     }
                     function emi(p,t,r){
@@ -132,6 +150,14 @@
                         emi = -emi;
                     }
                     return Number(Math.round(emi+'e2')+'e-2');
+                    }
+                    function inc(){
+                        document.getElementsByClassName("table_container_d")[0].style.display="block";
+                        document.getElementsByClassName("table_container")[0].style.display="none";
+                    }
+                    function dec(){
+                        document.getElementsByClassName("table_container")[0].style.display="block";
+                        document.getElementsByClassName("table_container_d")[0].style.display="none";
                     }
                 </script>
                 
@@ -153,7 +179,7 @@
                                 <tr>
                                     <th scope="col"> S/No </th>
                                     <th scope="col"> Bank </th>
-                                    <th scope="col"> Intrest Rate <button ><span id = "sort" class="glyphicon glyphicon-arrow-down"></span></button> </th>
+                                    <th scope="col"> Intrest Rate <button onclick="inc()" ><span id = "sort" class="glyphicon glyphicon-arrow-up"></span></button> </th>
                                     <th scope="col"> Priciple Amount</th>
                                     <th scope="col"> Period (in months)</th>
                                     <th scope="col"> EMI </th>
@@ -174,6 +200,40 @@
                                     <% var c = data[i].class+'_total' %>
                                     <td><b id="<%= c %>"></b></td>
                                 </tr>
+                                <% } %> 
+                            </tbody>
+                    </table>
+                   
+                </div>
+                <div class="container well table_container_d " style="display: none;">
+                    <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> S/No </th>
+                                    <th scope="col"> Bank </th>
+                                    <th scope="col"> Intrest Rate <button onclick="dec()" ><span id = "sort_d" class="glyphicon glyphicon-arrow-down"></span></button> </th>
+                                    <th scope="col"> Priciple Amount</th>
+                                    <th scope="col"> Period (in months)</th>
+                                    <th scope="col"> EMI </th>
+                                    <th scope="col"> Total Amount </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% var cnt = 1%>
+                                <% for(var i=data.length-1;i>=0;i--) { %>
+                                <tr>
+                                    <th scope="row"><%= cnt %></th>
+                                    <td><b><%= data[i].bank_name %></b></td>
+                                    <% var a = data[i].class+'_irate' %>
+                                    <td><b id="<%=a%>"><%= data[i].bank_intrest_rate %></b>%</td>
+                                    <td><b class="p_a"></b></td>
+                                    <td><b class="p_t"></b></td>
+                                    <% var b = data[i].class+'_emi_d' %>
+                                    <td><b id="<%= b %>"></b></td>
+                                    <% var c = data[i].class+'_total_d' %>
+                                    <td><b id="<%= c %>"></b></td>
+                                </tr>
+                                <% cnt = cnt+1%>
                                 <% } %>
                                 
                             </tbody>
