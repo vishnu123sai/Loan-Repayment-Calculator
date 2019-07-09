@@ -4,7 +4,7 @@
         <title>
             Loan Repayment Calculator
         </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, , maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -21,7 +21,7 @@
             <button class="btn btn-success" onclick="fun1()">Calculator</button><br><br>
             <div id='calc-contain'>
                 <!-- start Calculator  -->
-              <form name="calculator">
+              <form name="calculator" class="form-group">
                 
                 <input type="text" id="ans" name="answer" />
                 <br>
@@ -75,7 +75,7 @@
                 <h3 class="text-center"><b>Principal Amount : <%= principle_amount %></b></h3><br>
     <!-- start Principal generator -->
                 <div class="col-sm-4 col-md-offset-1 well">
-                    <form method="POST" id="loan_form" action="/emi">
+                    <form method="POST" id="loan_form" action="/emi" class="form-group">
                         <label class="form_font"> Principal Amount :</label><br>
                         <input type="number" class="form-control" name="loan_amount" min="1"  required><br>
                         <label class="form_font"> Time Period (in months) :</label><br>

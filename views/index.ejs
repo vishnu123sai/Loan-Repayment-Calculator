@@ -4,7 +4,7 @@
         <title>
             Loan Repayment Calculator
         </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, , maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -22,7 +22,7 @@
         <div class="container ">
             <div class="row well">
                 <div class="col-sm-4 col-md-offset-1 well ">
-                    <form action="/emi" method="POST">
+                    <form action="/emi" method="POST" class="form-group">
                         <label class="form_font"> Principal Amount :</label><br>
                         <input type="number" class="form-control" name="loan_amount" min="1" required><br>
                         <label class="form_font"> Time Period (in months) :</label><br>
@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="col-sm-5 col-md-offset-1">
-                        <h4><a href="/compare_indian_loans" style="color: black;font-family:sans-serif">Compare Bank Loan Interest Rates</a></h4><br>
+                    <br><h4><a href="/compare_indian_loans" style="color: black;font-family:sans-serif">Compare Bank Loan Interest Rates</a></h4><br>
                     <h4><a href="#" style="color: black;font-family:sans-serif">Education Loan Interest Rates</a></h4><br>
                     <h4><a href="/student_tips" style="color: black;font-family:sans-serif">Money Saving Tips in Foreign</a></h4><br>
                     <h4><a href="#" style="color: black;font-family:sans-serif">Expenses in USA and Canada</a></h4><br>

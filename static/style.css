@@ -9,9 +9,13 @@ body{
 
 }
 #logo{
-    width: 400px;
+    width: 300px;
     height: 100px;
-    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle
 }
 .vision_mission{
     margin: 0px 150px;
@@ -176,6 +180,13 @@ output{
         padding: 0%;
         width: 100%;
 
+    }
+    .container{
+        width:100%;
+        overflow-x:scroll !important;
+    }
+    .form-control{
+        width: 200px;
     }
     
     

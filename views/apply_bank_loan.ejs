@@ -3,7 +3,7 @@
         <title>
             Loan Repayment Calculator
         </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, , maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -37,7 +37,7 @@
         <div class="text-center" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><h2>Apply here we will reach out you </h2></div>
         <div class="container-fluid">
             <div class="col-md-4 well">
-                <form action="/emi/apply-loan" method="POST">
+                <form action="/emi/apply-loan" method="POST" class="form-group">
                     <label>First Name</label>
                     <input type="text" class="form-control" placeholder="First Name" name="fname" required>
                     <label>Last Name</label>
@@ -50,6 +50,12 @@
                         <option value="USA"> USA </option>
                         <option value="CANADA"> CANADA </option>
                         <option value="UK"> UK </option>
+                    </select><br><br>
+                    <label>Select Bank (optional) : </label><select name="banks" required>
+                        <option value="Select Bank"> Select Bank </option>
+                        <% for(var i=0;i<=data.length-1;i++) { %>
+                            <option value="<%= data[i].bank_name %>"> <%= data[i].bank_name %> </option>
+                        <% } %>
                     </select><br>
                     <br><input type="submit" class="btn btn-success" value="Submit"><br>
                     <% if(bol === true) { %>
