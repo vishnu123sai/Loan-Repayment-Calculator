@@ -80,6 +80,7 @@ body{
     border-block-end-style: double;
     border-radius: 0%;
 }
+
 .navbar-brand{
     font-size: 24px;
     font-family: "Pacifico";
@@ -87,7 +88,6 @@ body{
 }
 .navbar{
     border: 100px;
-    
     background-color: #f8f8f8;
     background-clip: content-box;
     border-radius: 0%;
