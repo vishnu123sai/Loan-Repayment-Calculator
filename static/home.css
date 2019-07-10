@@ -1,0 +1,75 @@
+#logoImages { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 12px 0px 12px;
+}
+
+.logo-image {
+    width: 100%;
+    max-width: 690px;
+    min-width: 250px; /* this property is used in Sticky top  script*/
+    position: sticky;
+    top: 0;
+}
+
+.srfc, .srsc, .trfc, .trsc {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    margin: 22px;
+    border-radius: 22px;
+    min-width: 300px;
+    min-height: 200px;
+    max-width: 400px;
+}
+
+.second-row div.srfc, .second-row div.srsc, .third-row div.trfc, .third-row div.trsc {
+    -webkit-box-shadow: 3px -1px 123px 0px rgba(36,36,36,0.56);
+    -moz-box-shadow: 3px -1px 123px 0px rgba(36,36,36,0.56);
+    box-shadow: 3px -1px 123px 0px rgba(36,36,36,0.56);
+}
+
+.second-row div.srfc:active, .second-row div.srsc:active, .third-row div.trfc:active, .third-row div.trsc:active {
+    box-shadow: none;
+}
+
+
+.second-row, .third-row {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+} 
+
+
+/* To show some trasactions on box elements */
+.visibility-class {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+
+
+/* Footer CSS */
+
+
+@media screen and (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }   
+    .srfc, .srsc, .trfc, .trsc {
+        margin: 16px auto 16px auto;
+    }
+   
+}
+
+
+ 
+/*
+ @media screen and (max-width:1200px) and (min-width:992px) {
+
+
+ } */
+
+
