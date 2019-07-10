@@ -69,14 +69,20 @@ Details.find({}, function(err, data){
 
     //routes
 
-    app.get("/", function(req,res){
-        res.render("index")
+    app.get('/', function(req,res){
+        res.render("home")
+    })
+    app.get('/home', function(req,res){
+        res.render("home")
+    })
+    app.get("/emi-calculator", function(req,res){
+        res.render("emi_calculator")
     });
-    app.get("/emi", function(req, res){
-        res.render("index");
+    app.get("/emi-calculator/emi-dashboard", function(req, res){
+        res.render("emi_dashboard");
     })
 
-    app.post("/emi", urlencodedParser, function(req, res){
+    app.post("/emi-calculator/emi-dashboard", urlencodedParser, function(req, res){
         p = req.body.loan_amount;
         t = req.body.period;
         r = req.body.intrest_rate;
@@ -94,7 +100,7 @@ Details.find({}, function(err, data){
         Details.find({}, function(err, data){
             loan_data = data;
             if(err) throw err;
-            res.render("result",{emi : Number(Math.round(emi+'e2')+'e-2'),
+            res.render("emi_dashboard",{emi : Number(Math.round(emi+'e2')+'e-2'),
             intrest : Number(Math.round(intrest+'e2')+'e-2'),
             total_amount : Number(Math.round(total_amount+'e2')+'e-2'),
             intrest_rate : r,
@@ -113,11 +119,12 @@ Details.find({}, function(err, data){
         res.render("compare_bank_rates_i", {data : loan_data})
     });
 
-    app.get("/emi/apply-loan", function(req, res){
+    app.get("/apply-loan", function(req, res){
         res.render("apply_bank_loan", {bol:false, data: loan_data}); 
     });
+    
 
-    app.post("/emi/apply-loan",urlencodedParser, function(req, res){
+    app.post("/apply-loan",urlencodedParser, function(req, res){
         var email_id = req.body.email;
         var fname = req.body.fname;
         var lname = req.body.lname;
