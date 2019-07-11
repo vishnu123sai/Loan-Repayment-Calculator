@@ -1,12 +1,14 @@
+html, body
+{
+width: 100%;
+height: 100%;
+}
 body{
     /* background-color: #659dbd  */
     /* background-color: #5cdb95 */
     /* background-color: #97caef */
     /* background-color: #2f2fa2   */
     background-color: #659dbd;
-    width: 100%;
-
-
 }
 
 #logo{
@@ -162,6 +164,28 @@ output{
     padding: 20px;
 }
 
+.footer-center {
+    text-align: center;
+    }
+
+
+/* Bootstrap class */
+.well{
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+    overflow-x: hidden;
+    padding: 1%;
+}
+
+.td-interest-rate{
+    text-align: center;
+}
+
 @media screen and (max-width: 1025px) {
     #calc-contain{
         position: relative;
@@ -193,25 +217,4 @@ output{
     }
     
     
-}
-.footer-center {
-    text-align: center;
-    }
-
-
-/* Bootstrap class */
-.well{
-    border-radius: 5px;
-}
-
-.dropdown-menu {
-    width: 100%;
-    height: auto;
-    max-height: 100px;
-    overflow-x: hidden;
-    padding: 1%;
-}
-
-.td-interest-rate{
-    text-align: center;
 }
