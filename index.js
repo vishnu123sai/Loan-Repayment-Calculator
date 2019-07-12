@@ -115,6 +115,11 @@ Details.find({}, function(err, data){
     app.get("/student_tips", function(req, res){
         res.render("student_tips")
     });
+
+    app.get("/education-loan-interest-rates", function(req, res){
+        res.render("education_loan_interest_rates");
+    });
+
     app.get("/compare_indian_loans", function(req,res){
         res.render("compare_bank_rates_i", {data : loan_data})
     });
