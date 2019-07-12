@@ -6,17 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/eduction_loan_interest_rates.css">
+    <link rel="stylesheet", href="/static/style.css" type="text/css">
     <title>Education loan interest rates</title>
 </head>
 <body>
+        <%- include('partials/header') -%>
 
     <div class="container-fluid">
-            <div class="row">
-                <div class="col logo-container" >
-                    <a href="/">
-                        <img id="logo" src="https://static.wixstatic.com/media/55c749_7243a1dcc9204ec38a5b27edc8f90fde~mv2_d_2400_1200_s_2.png/v1/fill/w_688,h_348,al_c,q_80,usm_0.66_1.00_0.01/55c749_7243a1dcc9204ec38a5b27edc8f90fde~mv2_d_2400_1200_s_2.webp">
-                    </a>
-                </div>
 
             <div class="col content">
                     <p>Education Loans play a huge role in your abroad studies plans. A fit loan strategy can help you save lakhs.</p>
@@ -55,7 +51,7 @@
             </div>
         </div>
 
-        <div class="col table-content">
+        <div class="col table-content well">
             <table class="table">
                 <thead>
                     <tr>
@@ -201,8 +197,8 @@
 
         </div>
 
-            <!-- <%- include('partials/footer') -%> --> 
-            <!-- This footer CSS effecting all other class properties ( in this page) Thats why I commented that -->
+            <%- include('partials/footer') -%>
+           
     </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

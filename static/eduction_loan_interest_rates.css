@@ -5,21 +5,14 @@ body {
     background-color: #659dbd;
 }
 
-.logo-container {
-    width: 100%;
-    text-align: center; 
-    background-color: white;   
-}
+
 
 .container-fluid {
     width: 100%;
     height: auto;
 }
 
-#logo {
-    width: 200px;
-    height: 98px;
-}
+
 
 /* Content */
 
@@ -45,15 +38,20 @@ p {
     width: 90%;
     text-align: center;
     margin: 22px auto 0px auto;
-    color: white;
     overflow-x: auto;
-    background-color: #336699;
     border-radius: 10px;
     -webkit-box-shadow: 10px 10px 109px -17px rgba(153,153,153,1);
     -moz-box-shadow: 10px 10px 109px -17px rgba(153,153,153,1);
     box-shadow: 10px 10px 109px -17px rgb(255, 255, 255)
 }
 
+tr :nth-child(even){
+    background: #d61444;
+}
+
+ tr :nth-child(odd){
+    background:     #0ada4f;
+}
 
 th {
     text-align: center;
