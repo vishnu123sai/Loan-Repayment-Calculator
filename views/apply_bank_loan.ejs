@@ -33,6 +33,11 @@
         <%- include('partials/header') -%><br>
         <div class="text-center" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><h2>Apply here we will reach out you </h2></div>
         <div class="container-fluid">
+                <% if(false_email === true) { %>
+                    <br><div class="text-center">
+                        <h3 class="alert-warning">Please Enter a valid Email ID</h3>
+                    </div>
+                <% } %>
             <div class="col-md-4 well apply">
                 <form action="/apply-loan" method="POST" class="form-group">
                     <label>First Name</label>
@@ -60,6 +65,7 @@
                             <h3 class="alert-success">Thanks for applying our consultant will reach you shortly</h3>
                         </div>
                     <% } %>
+                    
                 </form>
 
             </div>

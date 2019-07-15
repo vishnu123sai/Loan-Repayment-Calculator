@@ -9,13 +9,155 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         <link rel="stylesheet", href="/static/style.css" type="text/css">
         <link rel="stylesheet", href="/static/home.css">
-        
+        <style>
+                .eligibility_calci{
+                    margin: 30px 430px;
+                     padding: 10px 50px;
+                     display: flex;
+                }
+                @media screen and (max-width: 1150px) {
+                    .eligibility_calci{
+                        margin: 0%;
+                        width: 100%;
+                        padding: 10px 30px;                         
+                    }
+                    .form-control{
+                        width: 200px;
+                    }
+                    
+                    
+                }
+        </style>
     </head>
     <body>
         <%- include('partials/header') -%>
+        <div class="container well">
+            <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Calculator</h3>
+            <div class="row">
+                <div class="col-md-6 eligibility_calci">
+                    <form class="form-group">
+                        <label>Name : </label>
+                        <input type="text" class="form-control" name="name" placeholder="Name" required>
+                        <label>Country : </label>
+                        <input type="text" class="form-control" name="country" placeholder="Country" required>
+                        <label>Age : </label>
+                        <input type="number" class="form-control" name="age" placeholder="Age" required><br>
+                        <label>Academics : </label>
+                        <select name="academics" required>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Poor</option>
+                        </select><br><br>
+                        <label>University Admission : </label>
+                        <select name="admission" required>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select><br><br>
+                        <label>Sufficient Income : </label>
+                        <select name="income" required>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select><br><br>
+                        
+                        <input type="submit" class="form-control btn btn-success" value="Check Eligibility">
+                    </form>
+                    
+                </div>
+            </div>
 
-
-        <!-- body -->
+        </div>
+        <br>
+        <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Requirement Table</h3>
+        <div class="container well text-center">
+            <div class="col-md-12">
+                <table class="table">  
+                <tbody>
+                <tr>
+                <td>
+                <p><strong>Particulars</strong></p>
+                </td>
+                <td>
+                <p><strong>Eligibility</strong></p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>Nationality</p>
+                </td>
+                <td>
+                <p>Indian</p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>Age</p>
+                </td>
+                <td>
+                <p>Minimum- 18 years</p>
+                <p>Maximum- 35 years</p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>Academic record</p>
+                </td>
+                <td>
+                <p>Proven- good</p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>Qualification</p>
+                </td>
+                <td>
+                <p>Pursuing graduate/postgraduate degree or a PG diploma.</p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>Income source</p>
+                </td>
+                <td>
+                <p>Parents/Guardians </p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>Income</p>
+                </td>
+                <td>
+                <p>Stable</p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>University Applied to</p>
+                </td>
+                <td>
+                <p>Recognised – In India/Abroad</p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>Admission Status</p>
+                </td>
+                <td>
+                <p>Confirmed</p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <p>Security </p>
+                </td>
+                <td>
+                <p>Tangible collateral or guarantor- depending on the loan amount and income source.</p>
+                </td>
+                </tr>
+                </tbody>
+                </table>
+            </div>  
+                
+        </div>
 
         
         <%- include('partials/footer') -%>
