@@ -18,7 +18,7 @@
     font-weight: bold;
 }
 
-.srfc, .srsc, .trfc, .trsc {
+.srfc, .srsc, .srtc, .trfc, .trsc, .trtc {
     background-color: white;
     display: flex;
     align-items: center;
@@ -31,13 +31,13 @@
     max-width: 400px;
 }
 
-.second-row div.srfc, .second-row div.srsc, .third-row div.trfc, .third-row div.trsc {
+.second-row div.srfc, .second-row div.srsc, .second-row div.srtc, .third-row div.trfc, .third-row div.trsc, .third-row div.trtc {
     -webkit-box-shadow: 3px -1px 123px 0px rgba(36,36,36,0.56);
     -moz-box-shadow: 3px -1px 123px 0px rgba(36,36,36,0.56);
     box-shadow: 3px -1px 123px 0px rgba(36,36,36,0.56);
 }
 
-.second-row div.srfc:active, .second-row div.srsc:active, .third-row div.trfc:active, .third-row div.trsc:active {
+.second-row div.srfc:active, .second-row div.srsc:active, .second-row div.srtc:active, .third-row div.trfc:active, .third-row div.trsc:active, .third-row div.trtc:active {
     box-shadow: none;
 }
 
@@ -63,7 +63,7 @@
     .row {
         flex-direction: column;
     }   
-    .srfc, .srsc, .trfc, .trsc {
+    .srfc, .srsc, .srtc, .trfc, .trsc, .trtc {
         margin: 16px auto 16px auto;
     }
    
