@@ -10,6 +10,7 @@ body {
 .container-fluid {
     width: 100%;
     height: auto;
+
 }
 
 
@@ -22,6 +23,7 @@ body {
     margin: 22px auto 0px auto;
     font-size: 18px;
     color: white;
+    
 }
 
 li {
@@ -42,11 +44,12 @@ p {
     border-radius: 10px;
     -webkit-box-shadow: 10px 10px 109px -17px rgba(153,153,153,1);
     -moz-box-shadow: 10px 10px 109px -17px rgba(153,153,153,1);
-    box-shadow: 10px 10px 109px -17px rgb(255, 255, 255)
+    box-shadow: 10px 10px 109px -17px rgb(255, 255, 255);
+    
 }
 
 tr :nth-child(even){
-    background: #d61444;
+    background: #db5b11;
 }
 
  tr :nth-child(odd){
