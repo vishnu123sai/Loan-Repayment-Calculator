@@ -70,8 +70,13 @@
 <!-- start Top container -->
         <div class="container">
             <div class="row well">
+                <div class="col">
+                    <h3 class="text-center"><b>Principal Amount : <%= principle_amount %></b></h3>
+                </div>
+            </div>
+            
+            <div class="row well">
                 <!-- Heading -->
-                <h3 class="text-center"><b>Principal Amount : <%= principle_amount %></b></h3><br>
     <!-- start Principal generator -->
                 <div class="col-sm-4 col-md-offset-1 well">
                     <form method="POST" id="loan_form" action="/emi-calculator/emi-dashboard" class="form-group">

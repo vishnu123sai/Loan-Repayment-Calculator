@@ -15,24 +15,22 @@
         <%- include('partials/header') -%>
         <br>
         
-        <div class="container ">
-            <div class="row well">
-                <h3 style="padding-left:10%"><b>Loan EMI Calculator : </b></h3><br>
-                <div class="col-sm-4 col-md-offset-1 well">
-                    
-                    <form action="/emi-calculator/emi-dashboard" method="POST" class="form-group">
-                        <label class="form_font"> Principal Amount :</label><br>
-                        <input type="number" class="form-control" name="loan_amount" min="1" required><br>
-                        <label class="form_font"> Time Period (in months) :</label><br>
-                        <input type="number" class="form-control" name="period" min="1" required><br>
-                        <label class="form_font"> Interest Rate :</label><br>
-                        <input type="number" step="0.01" class="form-control" min="0" max="100" name="intrest_rate" required><br>
-                        <input type="submit" class="btn btn-success form-control form_font" name="get_emi", value="Generate EMI">
-                    </form>
-                    
-
+        <div class="container emi-container">
+            <div class="row well top-row" style="margin-bottom: 20px">
+                <div class="col-sm col-md-6 frfc">
+                    <h3><b>Loan EMI Calculator : </b></h3>
+                        <form action="/emi-calculator/emi-dashboard" method="POST" class="form-group">
+                            <label class="form_font"> Principal Amount :</label><br>
+                            <input type="number" class="form-control" name="loan_amount" min="1" required><br>
+                            <label class="form_font"> Time Period (in months) :</label><br>
+                            <input type="number" class="form-control" name="period" min="1" required><br>
+                            <label class="form_font"> Interest Rate :</label><br>
+                            <input type="number" step="0.01" class="form-control" min="0" max="100" name="intrest_rate" required><br>
+                            <input type="submit" class="btn btn-success form-control form_font" name="get_emi", value="Generate EMI">
+                        </form>
                 </div>
-                <div class="col-sm-5 col-md-offset-1">
+
+                <div class="col-sm col-md-6 frsc">
                     <h3 style="text-decoration: underline"><b>Education Loan EMI Calculator : </b></h3><br>
                     <p style="font-size:16px;text-indent: 50px;text-align: justify">
                              Education Loan EMI Calculator is a smart tool that calculates your monthly EMI amount 
@@ -43,23 +41,24 @@
                     </p>
                 </div>
             </div>
-
-        </div>
-        <div class="container well">
-            <div style="padding:30px;line-height: 1.6">
-                <h3 style="text-decoration: underline"><b>Features of our Education Loan EMI Calculator : </b></h3><br>
-                <ul style="font-size:16px;">
-                    <li>Candidate can see what is the EMI and Intrest Amount for different intrest rates.</li>
-                    <li>Candidate can see a visual diagram which shows principle amount vs Intrest amount.</li>
-                    <li>We have period table where you can see EMI and Intrest amount based on time period.</li>                        <li>We can see EMI and Intrest amount provided by bank by selecting bank in drop down.</li>
-                    <li>We have clear chart of time period where you can see how EMI is distributed.</li>
-                </ul> <br>
-            
-                <p style="font-size:16px;text-indent: 50px;text-align: justify">
-                        You can request a callback and the <a href="/apply-loan"><b>Loan counsellor</b></a> will get back to you. One can check his/her <a><b>Loan eligibility</b></a>, 
-                        best intrest rates provided by bank and even apply for loans with best offers from our collabrative 
-                        banks by visiting <a><b>Foreignadmits</b></a> website.         
-                </p>
+            <div class="row well">
+                <div class="col">
+                    <div style="padding:30px;line-height: 1.6">
+                        <h3 style="text-decoration: underline"><b>Features of our Education Loan EMI Calculator : </b></h3><br>
+                            <ul style="font-size:16px;">
+                                <li>Candidate can see what is the EMI and Intrest Amount for different intrest rates.</li>
+                                <li>Candidate can see a visual diagram which shows principle amount vs Intrest amount.</li>
+                                <li>We have period table where you can see EMI and Intrest amount based on time period.</li>                        <li>We can see EMI and Intrest amount provided by bank by selecting bank in drop down.</li>
+                                <li>We have clear chart of time period where you can see how EMI is distributed.</li>
+                            </ul> <br>
+                    
+                            <p style="font-size:16px;text-indent: 50px;text-align: justify">
+                                    You can request a callback and the <a href="/apply-loan"><b>Loan counsellor</b></a> will get back to you. One can check his/her <a><b>Loan eligibility</b></a>, 
+                                    best intrest rates provided by bank and even apply for loans with best offers from our collabrative 
+                                    banks by visiting <a><b>Foreignadmits</b></a> website.         
+                            </p>
+                    </div>
+                </div>
             </div>
         </div>
         <%- include('partials/footer') %>
