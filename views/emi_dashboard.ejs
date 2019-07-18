@@ -19,37 +19,37 @@
             <button class="btn btn-success" onclick="fun1()">Calculator</button><br><br>
             <div id='calc-contain'>
                 <!-- start Calculator  -->
-              <form name="calculator" class="form-group">
+                <form name="calculator" class="form-group">
                 
-                <input type="text" id="ans" name="answer" />
-                <br>
+                    <input type="text" id="ans" name="answer" />
+                    <br>
+                    
+                    <input type="button" id="btn" value=" 1 " onclick="calculator.answer.value += '1'" />
+                    <input type="button" id="btn" value=" 2 " onclick="calculator.answer.value += '2'" />
+                    <input type="button" id="btn" value=" 3 " onclick="calculator.answer.value += '3'" />
+                    <input type="button" id="btn" value=" + " onclick="calculator.answer.value += '+'" />
+                    <br/>
+                    
+                    <input type="button" id="btn" value=" 4 " onclick="calculator.answer.value += '4'" />
+                    <input type="button" id="btn" value=" 5 " onclick="calculator.answer.value += '5'" />
+                    <input type="button" id="btn" value=" 6 " onclick="calculator.answer.value += '6'" />
+                    <input type="button" id="btn" value=" - " onclick="calculator.answer.value += '-'" />
+                    </br>
                 
-                <input type="button" id="btn" value=" 1 " onclick="calculator.answer.value += '1'" />
-                <input type="button" id="btn" value=" 2 " onclick="calculator.answer.value += '2'" />
-                <input type="button" id="btn" value=" 3 " onclick="calculator.answer.value += '3'" />
-                <input type="button" id="btn" value=" + " onclick="calculator.answer.value += '+'" />
-                <br/>
+                    <input type="button" id="btn" value=" 7 " onclick="calculator.answer.value += '7'" />
+                    <input type="button" id="btn" value=" 8 " onclick="calculator.answer.value += '8'" />
+                    <input type="button" id="btn" value=" 9 " onclick="calculator.answer.value += '9'" />
+                    <input type="button" id="btn" value=" x " onclick="calculator.answer.value += '*'" />
+                    </br>
                 
-                <input type="button" id="btn" value=" 4 " onclick="calculator.answer.value += '4'" />
-                <input type="button" id="btn" value=" 5 " onclick="calculator.answer.value += '5'" />
-                <input type="button" id="btn" value=" 6 " onclick="calculator.answer.value += '6'" />
-                <input type="button" id="btn" value=" - " onclick="calculator.answer.value += '-'" />
-                </br>
-              
-                <input type="button" id="btn" value=" 7 " onclick="calculator.answer.value += '7'" />
-                <input type="button" id="btn" value=" 8 " onclick="calculator.answer.value += '8'" />
-                <input type="button" id="btn" value=" 9 " onclick="calculator.answer.value += '9'" />
-                <input type="button" id="btn" value=" x " onclick="calculator.answer.value += '*'" />
-                </br>
-            
-                <input type="button" id="btn" value=" c " onclick="calculator.answer.value = ''" />
-                <input type="button" id="btn" value=" 0 " onclick="calculator.answer.value += '0'" />
-                <input type="button" id="btn" value=" = " onclick="calculator.answer.value = eval(calculator.answer.value)" />
-                <input type="button" id="btn" value=" / " onclick="calculator.answer.value += '/'" />
-                </br>
+                    <input type="button" id="btn" value=" c " onclick="calculator.answer.value = ''" />
+                    <input type="button" id="btn" value=" 0 " onclick="calculator.answer.value += '0'" />
+                    <input type="button" id="btn" value=" = " onclick="calculator.answer.value = eval(calculator.answer.value)" />
+                    <input type="button" id="btn" value=" / " onclick="calculator.answer.value += '/'" />
+                    </br>
       
         
-              </form>
+                </form>
 
               <!-- end calculator -->
               
@@ -68,7 +68,7 @@
         <br>
         <h3 class="text-center" style="text-decoration:underline"><b>Education Loan EMI Dashboard</b></h3><br>
 <!-- start Top container -->
-        <div class="container">
+        <div class="container" style="padding: 5%">
             <div class="row well">
                 <div class="col">
                     <h3 class="text-center"><b>Principal Amount : <%= principle_amount %></b></h3>
@@ -78,7 +78,7 @@
             <div class="row well">
                 <!-- Heading -->
     <!-- start Principal generator -->
-                <div class="col-sm-4 col-md-offset-1 well">
+                <div class="col-sm col-md-6 frfc-ed well"> <!-- frfc style is coming from style.css -->.
                     <form method="POST" id="loan_form" action="/emi-calculator/emi-dashboard" class="form-group">
                         <label class="form_font"> Principal Amount :</label><br>
                         <input type="number" class="form-control" name="loan_amount" min="1"  required><br>
@@ -87,26 +87,22 @@
                         <label class="form_font"> Interest Rate :</label><br>
                         <input type="number" step="0.01" class="form-control" min="0" max="100" name="intrest_rate" required><br>
                         <input type="submit" class="btn btn-success form-control form_font" name="get_emi" value="Generate EMI">
-                    </form>
-                    <br>
-                    
-                    
-
+                    </form>             
                 </div>
     <!-- end Principal generator -->
     <!-- Start Interest rate -->
-                <div class="col-sm-5 col-md-offset-1" >  
+                <div class="col-sm col-md-6 frsc-ed " >  
                     <div class="row">
                         <div class="col align-self-center well">
                             <div class="slidecontainer">
                                     <b class="text" style="font-size: 18px">Interest Rate</b><br>
                                     <form class="ranging" >
                                         <div style="display: flex; flex-direction: row">
-                                            <div style="width: 60%; padding-top: 22px">
+                                            <div style="width: 80%; padding-top: 22px">
                                                 <input type="range" min="<%= min %>" max="<%= max %>" step="0.1" name="range_slider" class="slider" 
                                                 id="range_weight" value="<%= intrest_rate%>" oninput="range_weight_disp.value = range_weight.value" onchange="fun()">&nbsp;&nbsp;&nbsp;
                                             </div>
-                                            <div style="width: 20%;padding-top: 12px">
+                                            <div style="width: 20%; text-align: center ;padding-top: 12px">
                                                 <b><output  id="range_weight_disp"><%= intrest_rate%></output></b>
                                             </div>
                                         </div>
@@ -157,7 +153,7 @@
                             </div>
                         </div>
                         <div class="col align-self-center">
-                            <h4> Get the Bank EMI and Intrest Details : </h4><br>
+                            <h4><b> Get the Bank EMI and Intrest Details : </b></h4><br>
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"style="width:100%">
                                     Select Bank                 
@@ -228,115 +224,118 @@
                     </div>
                 </div>
     <!-- End Interest rate -->
-           
+            </div>
+            <div class="row well ">
+
+                    <div class="col-sm-4 srfc-ed well">
+                            <canvas id="myCanvas" width="300" height="300"></canvas>
+                            <script>
+                                
+                                let myChart  = document.getElementById("myCanvas").getContext('2d');
+                                window.bar = new Chart(myChart, {
+                                    type : 'pie',
+                                    data : {
+                                        labels:['Intrest', 'Principle Amount'],
+                                        datasets:[{
+                                            data:[<%= intrest %>,<%= principle_amount %>],
+                                            backgroundColor :['red','green']
+                                        }]
+                                    }
+                                })
+                                
+                                
+                            </script><br>
+                        <h4 style="text-align: center"><b>Interest</b> vs <b>Principal Amount</b></h4>
+                    </div>
+                    
+                    <div class="col-sm-8 srsc-ed"  style="overflow-x: auto ">
+                        <h4 style="text-align: center;"><b>EMI and Intrest Based on Period</b></h4><br>
+                            <table class="table" style="overflow-x: auto ">
+                                <thead>
+                                <tr>
+                                    <th scope="col">S/No</th>
+                                    <th scope="col">Period(in months)</th>
+                                    <th scope="col">EMI</th>
+                                    <th scope="col">Total Amount</th>
+                                    <th scope="col">Intrest Amount</th>
+                            </tr>
+                                </thead>
+                                <tbody>
+                                    <% var cnt=1 %>
+                                    <% var p = principle_amount %>
+                                    <% var r = intrest_rate %>
+                                    <% var t = period - 24 %>
+                                    <% if(t<=0) { %>
+                                    <% t=6 %>
+                                    <% }  %>
+                                    <% var emis = 0 %>
+                                    <% for(i=0;i<9;i++) { %>
+                                        <tr class="text-center">
+                                            <% if(r>0) %>
+                                            <% emis = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t) %>
+                                            <% if(emis<0) %>
+                                            <% emis = -emis%>
+                                            <th scope="row"><%= cnt %></th>
+                                            <td><%= t %></td>
+                                            <td><%= Number(Math.round((emis)+'e2')+'e-2') %></td>
+                                            <td><%=  Number(Math.round((emis*t)+'e2')+'e-2')%></td>
+                                            <td><%=  Number(Math.round(((emis*t)-p)+'e2')+'e-2')%></td>
+                                        </tr>
+                                        <% cnt = Number(cnt)+1%>
+                                        <% t=Number(t)+6%>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                    </div> 
+    
+                </div>
+    
+            <div class="row well" >
+
+                <div class="col-md emi_sheet "  style="overflow-x: auto ">
+                    <h4 style="text-align: center;"><b>Overall EMI Details Based on Period and Intrest Rate</b></h4><br>
+                    <table class="table text-center">
+                        <thead>
+                            <tr class="text-right">
+                                <th scope="col"> Month </th>
+                                <th scope="col"> Principle Loan Amount </th>
+                                <th scope="col"> Intrest </th>
+                                <th scope="col"> Principle Comp </th>
+                                <th scope="col"> Remaining Loan </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% var p = principle_amount %>
+                        <% var remain_loan = principle_amount %>
+                        <% var r = intrest_rate %>
+                        <% var t = period %>
+                        <% var emis = 0 %>
+                        <% emis = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t) %>
+                        <% if(emis<0)%>
+                        <% emis = -emis%>
+                        <% var intrest = p * (r/100) %>
+                        <% for(i=1;i<=t;i++) { %>
+                            <tr>
+                                <th scope="row"><%= i %></th>
+                                <td><%=Number(Math.round(p+'e2')+'e-2')%></td>
+                                <td><%= Number(Math.round((intrest/12)+'e2')+'e-2') %></td>
+                                <td><%=  Number(Math.round((emis-(intrest/12))+'e2')+'e-2')%></td>
+                                <% remain_loan = p-(emis-(intrest/12)) %>
+                                
+                                <td><%=  Number(Math.round(remain_loan+'e2')+'e-2')%></td>
+                            </tr>
+                            <% p = remain_loan %>
+                            <% intrest = p * (r/100) %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>
 <!-- End Top container -->
 
-        <div class="container well">
-            <div class="col-sm-4 col-md-offset-1 well">
-                    <canvas id="myCanvas" width="300" height="300"></canvas>
-                    <script>
-                        
-                        let myChart  = document.getElementById("myCanvas").getContext('2d');
-                        window.bar = new Chart(myChart, {
-                            type : 'pie',
-                            data : {
-                                labels:['Intrest', 'Principle Amount'],
-                                datasets:[{
-                                    data:[<%= intrest %>,<%= principle_amount %>],
-                                    backgroundColor :['red','green']
-                                }]
-                            }
-                        })
-                        
-                        
-                    </script><br>
-                <h4 style="text-align: center"><b>Intrest</b> vs <b>Principal Amount</b></h4>
-            </div>
-            
-            <div class="col-sm-6 col-md-offset-1">
-                <h4 style="text-align: center;"><b>EMI and Intrest Based on Period</b></h4><br>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">S/No</th>
-                            <th scope="col">Period(in months)</th>
-                            <th scope="col">EMI</th>
-                            <th scope="col">Total Amount</th>
-                            <th scope="col">Intrest Amount</th>
-                      </tr>
-                        </thead>
-                        <tbody>
-                            <% var cnt=1 %>
-                            <% var p = principle_amount %>
-                            <% var r = intrest_rate %>
-                            <% var t = period - 24 %>
-                            <% if(t<=0) { %>
-                            <% t=6 %>
-                            <% }  %>
-                            <% var emis = 0 %>
-                            <% for(i=0;i<9;i++) { %>
-                                <tr class="text-center">
-                                    <% if(r>0) %>
-                                    <% emis = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t) %>
-                                    <% if(emis<0) %>
-                                    <% emis = -emis%>
-                                    <th scope="row"><%= cnt %></th>
-                                    <td><%= t %></td>
-                                    <td><%= Number(Math.round((emis)+'e2')+'e-2') %></td>
-                                    <td><%=  Number(Math.round((emis*t)+'e2')+'e-2')%></td>
-                                    <td><%=  Number(Math.round(((emis*t)-p)+'e2')+'e-2')%></td>
-                                </tr>
-                                <% cnt = Number(cnt)+1%>
-                                <% t=Number(t)+6%>
-                            <% } %>
-                        </tbody>
-                    </table>
-            </div> 
-        </div>
-        <div class="container well">
-            <div class="col-md-10 emi_sheet ">
-                <h4 style="text-align: center;"><b>Overall EMI Details Based on Period and Intrest Rate</b></h4><br>
-                <table class="table text-center">
-                    <thead>
-                        <tr class="text-right">
-                            <th scope="col"> Month </th>
-                            <th scope="col"> Principle Loan Amount </th>
-                            <th scope="col"> Intrest </th>
-                            <th scope="col"> Principle Comp </th>
-                            <th scope="col"> Remaining Loan </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <% var p = principle_amount %>
-                    <% var remain_loan = principle_amount %>
-                    <% var r = intrest_rate %>
-                    <% var t = period %>
-                    <% var emis = 0 %>
-                    <% emis = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t) %>
-                    <% if(emis<0)%>
-                    <% emis = -emis%>
-                    <% var intrest = p * (r/100) %>
-                    <% for(i=1;i<=t;i++) { %>
-                        <tr>
-                            <th scope="row"><%= i %></th>
-                            <td><%=Number(Math.round(p+'e2')+'e-2')%></td>
-                            <td><%= Number(Math.round((intrest/12)+'e2')+'e-2') %></td>
-                            <td><%=  Number(Math.round((emis-(intrest/12))+'e2')+'e-2')%></td>
-                            <% remain_loan = p-(emis-(intrest/12)) %>
-                            
-                            <td><%=  Number(Math.round(remain_loan+'e2')+'e-2')%></td>
-                        </tr>
-                        <% p = remain_loan %>
-                        <% intrest = p * (r/100) %>
-                        <% } %>
-                    </tbody>
-                </table>
-            </div>
 
-        </div>
         <%- include('partials/footer') %>
         
     </body>

@@ -62,10 +62,30 @@ body{
     width: 100%;
 }
 
-.frfc, .frsc {
+.frfc-ec, .frsc-ec {
     padding: 5%;
 }
 /* ////////////////////////////////////////////////End emi-calculator//////////////////////////////////////////////// */
+
+/* ////////////////////////////////////////////////End emi-dashboard//////////////////////////////////////////////// */
+
+.frfc-ed, .frsc-ed {
+    margin: 3%;
+    width: 43%;
+}
+
+.srfc-ed {
+    margin-top: 8.5%;
+}
+
+@media screen and (max-width: 768px) {
+    .frfc-ed, .frsc-ed {
+        margin: 0%;
+        width: 100%;
+    }
+}
+
+/* ////////////////////////////////////////////////End emi-dashboard//////////////////////////////////////////////// */
 .header-logo {
     background-color: white;
 }
@@ -201,9 +221,9 @@ output{
 .emi_sheet{
     padding-left: 140px;
 }
-.form-control{
+/* .form-control{
     width: 300px;
-}
+} */      /* setting form width to 100%. so I commented this */
 .bank_interest_details{
     margin-left: 35%;
 }
@@ -257,10 +277,10 @@ output{
         width:100%;
         overflow-x:scroll !important;
     }
-    .form-control{
+    /* .form-control{
         width: 200px;
         overflow-x:scroll !important;
-    }
+    } */ /* setting form width to 100%. so I commented this */
     
     
 }
