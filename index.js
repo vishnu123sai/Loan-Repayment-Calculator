@@ -88,8 +88,27 @@ Details.find({}, function(err, data){
     });
 
     app.get("/eligibility-calculator", function(req,res){
-        res.render("eligibility_calculator")
+        res.render("eligibility_calculator",{req:req.method, eligible:false, msg: ""})
     });
+    // app.post("/eligibility-calculator", urlencodedParser , function(req,res){
+    //     var msg = false;
+    //     var eligible = false;
+    //     var name = req.body.name;
+    //     var country  = req.body.country;
+    //     var age = req.body.age;
+    //     var academics = req.body.academics;
+    //     var admission = req.body.admission;
+    //     var income = req.body.income;
+    //     if((age>=18 && age<35) && (academics!="Poor") && (admission==="Yes")&&(income==="Yes")){
+    //         msg = name +", Your eligible to apply for "+country+" education loans as per the information given.\n ";
+    //         eligible = true;
+    //     }
+    //     else{
+    //         msg = name +", Your not eligible to apply for "+country+" education loans as per the information given.\n ";
+    //     }
+
+    //     res.render("eligibility_calculator",{req:req.method, eligible:eligible, msg: msg})
+    // });
 
     app.post("/emi-calculator/emi-dashboard", urlencodedParser, function(req, res){
         p = req.body.loan_amount;
