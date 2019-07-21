@@ -7,22 +7,31 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        <link rel="stylesheet", href="/static/style.css" type="text/css">
+        <!-- <link rel="stylesheet", href="/static/style.css" type="text/css"> -->
         <style>
-                .eligibility_calci{
-                    margin: 30px 430px;
-                     padding: 10px 50px;
-                     display: flex;
+                 li {
+                    margin: 3px;
+                }
+                .container {
+                    margin: 0% 0% 0% 0%;
+                    padding: 5% 5% 5% 5%;
+                    overflow-x: none;
+                }
+                .eligibility_calci {
+                        width: 80%;
+                        padding: 3%;
+                        margin: auto;
+                        max-width: 500px;
                 }
                 @media screen and (max-width: 1150px) {
-                    .eligibility_calci{
+                    /* .eligibility_calci{
                         margin: 0%;
                         width: 100%;
                         padding: 10px 30px;                         
-                    }
-                    .form-control{
+                    } */
+                    /* .form-control{
                         width: 200px;
-                    }
+                    } */
                     
                     
                 }
@@ -31,193 +40,163 @@
     <body>
         <%- include('partials/header') -%>
         <br>
-        <div class="container well">
-            <h3><b style="text-decoration: underline">Education Loan Eligibility : </b></h3>
-            <p style="font-size:16px;text-indent: 50px;text-align: justify" >Since these loans are offered to brilliant students who are unable to meet the expenses of their higher education, the basic education loan eligibility is the academic excellence and achievements of the students. In other words, the eligibility of the applicants are assessed on the basis of their academic performance as cited in the mark sheets of previous exams.
-            </p>
-            <h3><b style="text-decoration: underline">Eligibility criteria : </b></h3>
-            <p style="font-size:16px;text-indent: 50px;text-align: justify" >The vital education loan eligibility criteria that the candidates need to fulfil to get approval for the loan are listed out here:
-                <ul style="font-size:16px;">
-                    <li>The candidate applying for the loan must be a resident of India.</li>
-                    <li>He/she must have confirmed admission in recognised educational institutes in India or abroad.</li>
-                    <li>The age of the candidate must fall within the bracket of 18 to 35 years during loan application.</li>
-                    <li>He/she must be undergoing a graduate/postgraduate degree or a PG diploma.</li>
-                    <li>The applicant should have a secured admission in a college or university affiliated by UGC/AICTE/Govt. etc.</li>
-                    <li>Students pursuing full-time courses need to have a co-applicant who can be either parent/guardian or spouse/parent-in-law (in case of married candidates).
-                        </li>
-                </ul>
-            </p>
-        </div>
-        <div class="container well">
-            <h3><b style="text-decoration: underline">Education Loan Documentation : </b></h3>
-            <p style="font-size:16px;text-indent: 50px;text-align: justify" >As told earlier, education loan documentation doesn’t involve any hard-core paperwork. 
-                The process is simple and can be conducted online without paying physical visits to the banks. 
-                However, the process might vary depending on the criteria set by various banks or lending organisations. 
-                Also, the banks being very strict in their terms, failure to submit the mandated documents will lead to rejection
-                <br><h4><b style="text-decoration: underline">Required Documents : </b></h4>
-                Here are the mandatory documents that a student need to provide to the banks while applying for a student loan:
-                <br><br><ul style="font-size:16px;">
-                    <li>Duly filled and signed application form with affixed photographs</li>
-                    2 photographs of passport size<br><br>
-                    <li>Copy of exam mark sheets of 10th/12th or latest education certificate</li><br><br>
-                    <li>Statement of course expenses/cost of study</li><br><br>
-                    <li>Aadhaar Card and Pan Card of the student and Parent/ Guardian</li><br><br>
-                    <li>Age proof</li>
-                    Copy of Aadhaar Card /Voter ID/Passport/Driving License<br><br>
-                    <li>Identity proof</li>
-                    Copy of Voter ID/Aadhaar Card/Driving License/Passport<br><br>
-                    <li>Residence proof</li>
-                    Rental agreement/Bank statement of 6 months of the student or co-borrower/guarantor/Copy of Ration card/Gas Book/Electricity Bill/Tel Bill<br><br>
-                    <li>Income proof</li>
-                        Most recent salary slips or Form 16 of the parent/ guardian/co-borrower<br>
-                        6 months bank statement of the borrower or updated passbook of bank<br>
-                        Updated ITR (Income Tax Return with income computation) of 2 years or IT assessment order of last 2 years of parent/co-borrower/guardian<br>
-                        Documents stating the assets and liabilities of the parent/co-borrower/guardia<br>
-                </ul>
-            </p>
-
-        </div>
-        <div class="container well" style="display: block">
-            <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Calculator</h3>
-            <div class="row">
-                <div class="col-md-6 eligibility_calci">
-                    <form class="form-group" action="/eligibility-calculator" method="POST">
-                        <label>Name : </label>
-                        <input type="text" class="form-control" name="name" placeholder="Name" required>
-                        <label>Country : </label>
-                        <input type="text" class="form-control" name="country" placeholder="Country" required>
-                        <label>Age : </label>
-                        <input type="number" class="form-control" name="age" placeholder="Age" required><br>
-                        <label>Academics : </label>
-                        <select name="academics" required>
-                            <option>Excellent</option>
-                            <option>Good</option>
-                            <option>Poor</option>
-                        </select><br><br>
-                        <label>University Admission : </label>
-                        <select name="admission" required>
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select><br><br>
-                        <label>Sufficient Income : </label>
-                        <select name="income" required>
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select><br><br>
-                        
-                        <input type="submit" class="form-control btn btn-success" value="Check Eligibility">
-                    </form>
+        <div class="container" style="width:100%; padding: 6%; margin: 0%">
+            <div class="row well" style="padding: 4%">
+                <div class="col">
+                        <h3><b style="text-decoration: underline">Education Loan Eligibility : </b></h3>
+                        <p style="font-size:16px;text-indent: 50px;text-align: justify; padding: 12px" >Since these loans are offered to brilliant students who are unable to meet the expenses of their higher education, the basic education loan eligibility is the academic excellence and achievements of the students. In other words, the eligibility of the applicants are assessed on the basis of their academic performance as cited in the mark sheets of previous exams.</p>
+                        <h3><b style="text-decoration: underline">Eligibility criteria : </b></h3>
+                        <p style="font-size:16px;text-indent: 50px;text-align: justify; padding: 12px" >The vital education loan eligibility criteria that the candidates need to fulfil to get approval for the loan are listed out here:
+                            <ul style="font-size:16px;">
+                                <li>The candidate applying for the loan must be a resident of India.</li>
+                                <li>He/she must have confirmed admission in recognised educational institutes in India or abroad.</li>
+                                <li>The age of the candidate must fall within the bracket of 18 to 35 years during loan application.</li>
+                                <li>He/she must be undergoing a graduate/postgraduate degree or a PG diploma.</li>
+                                <li>The applicant should have a secured admission in a college or university affiliated by UGC/AICTE/Govt. etc.</li>
+                                <li>Students pursuing full-time courses need to have a co-applicant who can be either parent/guardian or spouse/parent-in-law (in case of married candidates).</li>
+                            </ul>
+                        </p>
                 </div>
-                <div>
-                    <% if(req==="POST"){ %>
-                        <% if(eligible===true){ %>
-                            <h4 class="text-center alert-success"><%= msg %></h4>
-                        <% } %>
-                        <% if(eligible===false){ %>
-                            <h4 class="text-center alert-danger" ><%= msg %></h4>
-                        <% } %>
-                    <% } %>
-
-                </div>
-                <% if(req==="POST"){ %>
-                    <h4 class="text-center"><a href="/apply-loan">Click Here</a> for Clear Guidance from our experts </h4>
-                <% } %>
             </div>
-        </div>
-        <br>
-        <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Requirement Table</h3>
-        <div class="container well text-center">
-            <div class="col-md-12">
-                <table class="table">  
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p><strong>Particulars</strong></p>
-                            </td>
-                            <td>
-                                <p><strong>Eligibility</strong></p>
-                            </td>
-                       </tr>
-                        <tr>
-                            <td>
-                                <p>Nationality</p>
-                            </td>
-                            <td>
-                                <p>Indian</p>
-                            </td>
-                        </tr>
-                                <tr>
-                                <td>
-                                <p>Age</p>
-                                </td>
-                                <td>
-                                <p>Minimum- 18 years</p>
-                                <p>Maximum- 35 years</p>
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                <p>Academic record</p>
-                                </td>
-                                <td>
-                                <p>Proven- good</p>
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                <p>Qualification</p>
-                                </td>
-                                <td>
-                                <p>Pursuing graduate/postgraduate degree or a PG diploma.</p>
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                <p>Income source</p>
-                                </td>
-                                <td>
-                                <p>Parents/Guardians </p>
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                <p>Income</p>
-                                </td>
-                                <td>
-                                <p>Stable</p>
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                <p>University Applied to</p>
-                                </td>
-                                <td>
-                                <p>Recognised – In India/Abroad</p>
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                <p>Admission Status</p>
-                                </td>
-                                <td>
-                                <p>Confirmed</p>
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                <p>Security </p>
-                                </td>
-                                <td>
-                                <p>Tangible collateral or guarantor- depending on the loan amount and income source.</p>
-                                </td>
-                                </tr>
-                                </tbody>
-                                </table>
-                            </div>  
+            <div class="row well" style="padding: 4%">
+                <div class="col">
+                        <h3><b style="text-decoration: underline">Education Loan Documentation : </b></h3>
+                        <p style="font-size:16px;text-indent: 50px;text-align: justify; padding: 12px;" >As told earlier, education loan documentation doesn’t involve any hard-core paperwork. 
+                            The process is simple and can be conducted online without paying physical visits to the banks. 
+                            However, the process might vary depending on the criteria set by various banks or lending organisations. 
+                            Also, the banks being very strict in their terms, failure to submit the mandated documents will lead to rejection </p>
+                        <h4><b style="text-decoration: underline">Required Documents : </b></h4>
+                        <div style="padding: 12px">
+                            <p style="font-size: 16px">Here are the mandatory documents that a student need to provide to the banks while applying for a student loan</p>
+                                <ul style="font-size:16px;">
+                                    <li>Duly filled and signed application form with affixed photographs (2 photographs of passport size)</li>
+                                    <li>Copy of exam mark sheets of 10th/12th or latest education certificate</li>
+                                    <li>Statement of course expenses/cost of study</li>
+                                    <li>Aadhaar Card and Pan Card of the student and Parent/ Guardian</li>
+                                    <li>Age proof</li>
+                                        <ul>
+                                            <li>Copy of Aadhaar Card /Voter ID/Passport/Driving License</li>
+                                        </ul>
+                                    <li>Identity proof</li>
+                                        <ul>
+                                            <li>Copy of Voter ID/Aadhaar Card/Driving License/Passport</li>
+                                        </ul>
+                                    <li>Residence proof</li>
+                                        <ul>
+                                            <li>Rental agreement/Bank statement of 6 months of the student or co-borrower/guarantor/Copy of Ration card/Gas Book/Electricity Bill/Tel Bill.</li>
+                                        </ul>
+                                    <li>Income proof</li>
+                                        <ul>
+                                            <li>Most recent salary slips or Form 16 of the parent/ guardian/co-borrower.</li>
+                                            <li>6 months bank statement of the borrower or updated passbook of bank.</li>
+                                            <li>Updated ITR (Income Tax Return with income computation) of 2 years or IT assessment order of last 2 years of parent/co-borrower/guardian.</li>
+                                            <li>Documents stating the assets and liabilities of the parent/co-borrower/guardia.</li>
+                                        </ul>      
+                                </ul>
+                            </div>
+                </div>
+            </div>
+            <div class="row well">
+                <div class="col">
+                    <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Calculator</h3>
+                    <div class="row">
+                        <div class="col eligibility_calci">
+                            <form class="form-group" action="/eligibility-calculator" method="POST">
+                                <label>Name : </label>
+                                <input type="text" class="form-control" name="name" placeholder="Name" required>
+                                <label>Country : </label>
+                                <input type="text" class="form-control" name="country" placeholder="Country" required>
+                                <label>Age : </label>
+                                <input type="number" class="form-control" name="age" placeholder="Age" required><br>
+                                <label>Academics : </label>
+                                <select name="academics" required>
+                                    <option>Excellent</option>
+                                    <option>Good</option>
+                                    <option>Poor</option>
+                                </select><br><br>
+                                <label>University Admission : </label>
+                                <select name="admission" required>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select><br><br>
+                                <label>Sufficient Income : </label>
+                                <select name="income" required>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select><br><br>
                                 
+                                <input type="submit" class="form-control btn btn-success" value="Check Eligibility">
+                            </form>
                         </div>
-                
-     
+                        <div>
+                            <% if(req==="POST"){ %>
+                                <% if(eligible===true){ %>
+                                    <h4 class="text-center alert-success" style="padding: 4px;"><%= msg %></h4>
+                                <% } %>
+                                <% if(eligible===false){ %>
+                                    <h4 class="text-center alert-danger" ><%= msg %></h4>
+                                <% } %>
+                            <% } %>
+                        <% if(req==="POST"){ %>
+                            <h4 class="text-center"><a href="/apply-loan">Click Here</a> for Clear Guidance from our experts </h4>
+                        <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row well">
+                <div class="col">
+                    <h3 style="text-decoration: underline;text-align: center; padding-bottom: 16px">Education Loan Eligibility Requirement Table</h3>
+                    <div class="col">
+                        <table class="table">  
+                            <tbody>
+                                <tr>
+                                    <td><strong>Particulars</strong></td>
+                                    <td><strong>Eligibility</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Nationality</td>
+                                    <td>Indian</td>
+                                </tr>
+                                <tr>
+                                    <td>Age </td>
+                                    <td>Minimum- 18 years
+                                            Maximum- 35 years</td>
+                                </tr>
+                                <tr>
+                                    <td>Academic record</td>
+                                    <td>Proven- good</td>
+                                </tr>
+                                <tr>
+                                    <td>Qualification</td>
+                                    <td>Pursuing graduate/postgraduate degree or a PG diploma.</td>
+                                </tr>
+                                <tr>
+                                    <td>Income source</td>
+                                    <td>Parents/Guardians </td>
+                                </tr>
+                                <tr>
+                                    <td>Income</td>
+                                    <td>Stable</td>
+                                </tr>
+                                <tr>
+                                    <td>University Applied to</td>
+                                    <td>Recognised – In India/Abroad</td>
+                                </tr>
+                                <tr>
+                                    <td>Admission Status</td>
+                                    <td>Confirmed</td>
+                                </tr>
+                                <tr>
+                                    <td>Security </td>
+                                    <td>Tangible collateral or guarantor- depending on the loan amount and income source.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+                </div>                
+            </div>       
+        </div>
         <%- include('partials/footer') -%>
 
     </body>
