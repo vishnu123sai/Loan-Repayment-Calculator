@@ -77,11 +77,11 @@
             </p>
 
         </div>
-        <div class="container well" style="display: none">
+        <div class="container well" style="display: block">
             <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Calculator</h3>
             <div class="row">
                 <div class="col-md-6 eligibility_calci">
-                    <form class="form-group">
+                    <form class="form-group" action="/eligibility-calculator" method="POST">
                         <label>Name : </label>
                         <input type="text" class="form-control" name="name" placeholder="Name" required>
                         <label>Country : </label>
@@ -107,33 +107,45 @@
                         
                         <input type="submit" class="form-control btn btn-success" value="Check Eligibility">
                     </form>
-                    
-                    
                 </div>
+                <div>
+                    <% if(req==="POST"){ %>
+                        <% if(eligible===true){ %>
+                            <h4 class="text-center alert-success"><%= msg %></h4>
+                        <% } %>
+                        <% if(eligible===false){ %>
+                            <h4 class="text-center alert-danger" ><%= msg %></h4>
+                        <% } %>
+                    <% } %>
+
+                </div>
+                <% if(req==="POST"){ %>
+                    <h4 class="text-center"><a href="/apply-loan">Click Here</a> for Clear Guidance from our experts </h4>
+                <% } %>
             </div>
         </div>
-                        <br>
-                        <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Requirement Table</h3>
-                        <div class="container well text-center">
-                            <div class="col-md-12">
-                                <table class="table">  
-                                <tbody>
-                                <tr>
-                                <td>
+        <br>
+        <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Requirement Table</h3>
+        <div class="container well text-center">
+            <div class="col-md-12">
+                <table class="table">  
+                    <tbody>
+                        <tr>
+                            <td>
                                 <p><strong>Particulars</strong></p>
-                                </td>
-                                <td>
+                            </td>
+                            <td>
                                 <p><strong>Eligibility</strong></p>
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
+                            </td>
+                       </tr>
+                        <tr>
+                            <td>
                                 <p>Nationality</p>
-                                </td>
-                                <td>
+                            </td>
+                            <td>
                                 <p>Indian</p>
-                                </td>
-                                </tr>
+                            </td>
+                        </tr>
                                 <tr>
                                 <td>
                                 <p>Age</p>
