@@ -151,6 +151,9 @@ Details.find({}, function(err, data){
     app.get("/apply-loan", function(req, res){
         res.render("apply_bank_loan", {bol:false, false_email:false, data: loan_data}); 
     });
+    app.get("/roi_calculator", function(req, res){
+        res.render("roi_calculator"); 
+    });
     
 
     app.post("/apply-loan",urlencodedParser, function(req, res){
@@ -219,8 +222,8 @@ Details.find({}, function(err, data){
 
 
 
-// var port  = process.env.PORT || 8080;
-var port  = process.env.PORT || 8081;
+
+var port  = process.env.PORT || 8080;
 console.log(port);
 
 
