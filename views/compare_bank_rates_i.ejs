@@ -9,264 +9,269 @@
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <link rel="stylesheet", href="/static/style.css">
+        <!-- <link rel="stylesheet", href="/static/style.css"> -->
         <style>
-        
-            @media screen and (max-width:800px){
-            .bank_interest_details{
-                margin-left:0%;
+            .form-class {
+                width: 75%;
+                margin: auto;
             }
-            .well{
-                margin: 0%;
-                padding: 0%;
-                width: 100%;
-                position:sticky;
-                
-
-            }
-            .container{
-                padding: 0%;
-                width:100%;
-                overflow-x:scroll !important;
-                margin: 0%;
-                
-            }
-
+            li {
+                list-style-type: none;
+                font-size: 20px;
             }
         </style>
     </head>
     <body>
         <%- include('partials/header') -%>
-        <br>
-        <div style="padding-right: 5%">
-        <a href="/apply-loan"><button type="button" class="btn btn-success" style="float: right; ">Apply for Loan</button></a><br>
-        </div>
-        <div class="container ">
-            <div class="col-md-12">
-                <h2 class="text-center" style="color: white;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Compare all bank Intrest rates in India</h2><br>
-                <div class="bank_interest_details form-group">
-                    <label class="form_font"> Principal Amount:</label><br>
-                    <input type="number" min="1" class="form-control" id="loan_amount" required>
-                    <label class="form_font"> Loan Duration (in months):</label><br>
-                    <input type="number" min="1" class="form-control" id="loan_duration" placeholder="Default 60 Months" required><br>
-                    <button class="btn btn-success" name="submit" onclick="banks()">Submit</button>
-                </div><br>
-                <script>
-                    function banks(){
-                        document.getElementById("alert").style.display="none";
-                        document.getElementsByClassName("table_container")[0].style.display="none";
-                            var p = document.getElementById('loan_amount').value;
-                            if(p===""){
-                            document.getElementById("alert").style.display="block";
-                            }
-                            else{
-                            document.getElementsByClassName("table_container")[0].style.display="block";
-                            document.getElementById('loan_amount').value="";
-                            var t = document.getElementById('loan_duration').value;
-                            if(t===""){
-                            t=60;}
-                            document.getElementById('loan_duration').value="";
-                            var ele = document.getElementsByClassName("p_a");
-                            for(i=0;i<ele.length;i++){
-                                ele[i].innerText = p;
-                            }
-                            var ele = document.getElementsByClassName("p_t");
-                            for(i=0;i<ele.length;i++){
-                                ele[i].innerText = t;
-                            }
-                            
-                        
-                            var r = document.getElementById('sbi_irate').innerHTML;
-                            console.log(r)
-                            var emis = emi(p,t,r);
-                            document.getElementById('sbi_emi').innerHTML= emis;
-                            document.getElementById('sbi_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('sbi_emi_d').innerHTML= emis;
-                            document.getElementById('sbi_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            
-                            r = document.getElementById('hdfc_irate').innerHTML;
-                            var emis = emi(p,t,r);
-                            document.getElementById('hdfc_emi').innerHTML= emis;
-                            document.getElementById('hdfc_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('hdfc_emi_d').innerHTML= emis;
-                            document.getElementById('hdfc_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            
-                            r = document.getElementById('kotak_irate').innerHTML;
-                            var emis = emi(p,t,r);
-                            document.getElementById('kotak_emi').innerHTML= emis;
-                            document.getElementById('kotak_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('kotak_emi_d').innerHTML= emis;
-                            document.getElementById('kotak_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-
-                            r = document.getElementById('canara_irate').innerHTML;
-                            var emis = emi(p,t,r);
-                            document.getElementById('canara_emi').innerHTML= emis;
-                            document.getElementById('canara_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('canara_emi_d').innerHTML= emis;
-                            document.getElementById('canara_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            
-                            r = document.getElementById('bob_irate').innerHTML;
-                            var emis = emi(p,t,r);
-                            document.getElementById('bob_emi').innerHTML= emis;
-                            document.getElementById('bob_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('bob_emi_d').innerHTML= emis;
-                            document.getElementById('bob_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            
-                            r = document.getElementById('axis_irate').innerHTML;
-                            var emis = emi(p,t,r);
-                            document.getElementById('axis_emi').innerHTML= emis;
-                            document.getElementById('axis_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('axis_emi_d').innerHTML= emis;
-                            document.getElementById('axis_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            
-                            r = document.getElementById('icici_irate').innerHTML;
-                            var emis = emi(p,t,r);
-                            document.getElementById('icici_emi').innerHTML= emis;
-                            document.getElementById('icici_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('icici_emi_d').innerHTML= emis;
-                            document.getElementById('icici_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            
-                            r = document.getElementById('pnb_irate').innerHTML;
-                            var emis = emi(p,t,r);
-                            document.getElementById('pnb_emi').innerHTML= emis;
-                            document.getElementById('pnb_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('pnb_emi_d').innerHTML= emis;
-                            document.getElementById('pnb_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            
-                            r = document.getElementById('boi_irate').innerHTML;
-                            var emis = emi(p,t,r);
-                            document.getElementById('boi_emi').innerHTML= emis;
-                            document.getElementById('boi_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                            document.getElementById('boi_emi_d').innerHTML= emis;
-                            document.getElementById('boi_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
-                        }
-                    }
-                    function emi(p,t,r){
-                        var emi=0;
-                    if(r>0)
-                        emi = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t);
-                    console.log(emi)
-                    if(emi<0)
-                    {
-                        emi = -emi;
-                    }
-                    return Number(Math.round(emi+'e2')+'e-2');
-                    }
-                    function inc(){
-                        document.getElementsByClassName("table_container_d")[0].style.display="block";
-                        document.getElementsByClassName("table_container")[0].style.display="none";
-                    }
-                    function dec(){
-                        document.getElementsByClassName("table_container")[0].style.display="block";
-                        document.getElementsByClassName("table_container_d")[0].style.display="none";
-                    }
-                </script>
-                
-            
+        <div class="container" style="padding: 0% 5% 0% 5%">
+            <div class="row" style="padding: 24px 0px 24px 0px">
+                <div class="col">
+                    <div>
+                            <a href="/apply-loan"><button type="button" class="btn btn-success" style="float: right; ">Apply for Loan</button></a><br>
+                    </div>
+                </div>
             </div>
-        </div><br>
-            <div id="alert" class=" alert alert-danger text-center" style="display: none;margin:0% 20%">
-                    <h4 class="text-center" style="width:100%;">Please enter principle amount</h4>
+            
+            <div class="row well">
+                <div class="col">
+                    <h2 class="text-center" style="color: black;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Compare all bank Intrest rates in India</h2><br>
+                    <form class="form-class">
+                        <div class="form-group">
+                            <label class="form_font"> Principal Amount:</label>
+                            <input type="number" min="1" class="form-control" id="loan_amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form_font"> Loan Duration (in months):</label>
+                            <input type="number" min="1" class="form-control" id="loan_duration" placeholder="Default 60 Months" required><br>
+                        </div>
+                        <button class="btn btn-success" name="submit" onclick="banks()">Submit</button>
+                    </form>
+            </div>
 
-                </div><br>
+            </div>
+
+            <div class="row" id="alert" style="display: none;">
+                <div class="col">
+                            <h4 class=" alert alert-danger text-center" style="width:100%;">Please enter principle amount</h4>
+                </div>
                 <script>
                         function close(){
                             document.getElementById("alert").style.display="none";
                         }
-                </script>
-                <div class="container well table_container " style="display: none;">
-                    <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col"> S/No </th>
-                                    <th scope="col"> Bank </th>
-                                    <th scope="col"> Intrest Rate <button onclick="inc()" ><span id = "sort" class="glyphicon glyphicon-arrow-up"></span></button> </th>
-                                    <th scope="col"> Priciple Amount</th>
-                                    <th scope="col"> Period (in months)</th>
-                                    <th scope="col"> EMI </th>
-                                    <th scope="col"> Total Amount </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% for(var i=0;i<=data.length-1;i++) { %>
-                                <tr>
-                                    <th scope="row"><%= i+1 %></th>
-                                    <td><b><%= data[i].bank_name %></b></td>
-                                    <% var a = data[i].class+'_irate' %>
-                                    <td><b id="<%=a%>"><%= data[i].bank_intrest_rate %></b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <% var b = data[i].class+'_emi' %>
-                                    <td><b id="<%= b %>"></b></td>
-                                    <% var c = data[i].class+'_total' %>
-                                    <td><b id="<%= c %>"></b></td>
-                                </tr>
-                                <% } %> 
-                            </tbody>
-                    </table>
-                   
-                </div>
-                <div class="container well table_container_d " style="display: none;">
-                    <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col"> S/No </th>
-                                    <th scope="col"> Bank </th>
-                                    <th scope="col"> Intrest Rate <button onclick="dec()" ><span id = "sort_d" class="glyphicon glyphicon-arrow-down"></span></button> </th>
-                                    <th scope="col"> Priciple Amount</th>
-                                    <th scope="col"> Period (in months)</th>
-                                    <th scope="col"> EMI </th>
-                                    <th scope="col"> Total Amount </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% var cnt = 1%>
-                                <% for(var i=data.length-1;i>=0;i--) { %>
-                                <tr>
-                                    <th scope="row"><%= cnt %></th>
-                                    <td><b><%= data[i].bank_name %></b></td>
-                                    <% var a = data[i].class+'_irate' %>
-                                    <td><b id="<%=a%>"><%= data[i].bank_intrest_rate %></b>%</td>
-                                    <td><b class="p_a"></b></td>
-                                    <td><b class="p_t"></b></td>
-                                    <% var b = data[i].class+'_emi_d' %>
-                                    <td><b id="<%= b %>"></b></td>
-                                    <% var c = data[i].class+'_total_d' %>
-                                    <td><b id="<%= c %>"></b></td>
-                                </tr>
-                                <% cnt = cnt+1%>
-                                <% } %>
-                                
-                            </tbody>
-    
-                    </table>
-                   
-                </div>
-        
-        <div class="container well">
-            <div class="bank_intrest_info">
-                <h3><b>Leading Banks offering Education Loan</b></h3> <br>
-                <h4>State Bank of India <br>
-                ICICI Bank <br>
-                HDFC Bank <br>
-                Axis Bank <br>
-                Punjab National Bank <br>
-                Canara Bank <br>
-                Bank of Baroda <br>
-                Bank of India <br>
-                Kotak Mahindra Bank <br>
-                Union Bank <br>
-                United Bank <br>
-                Central Bank <br>
-                Dena Bank <br>
-                UCO Bank <br>
-                Syndicate Bank <br>
-                Indian Overseas Bank</h4><br>
+                    </script>
             </div>
-        </div>
+
+            <div class="row well">
+                <div class="col">
+                    <div class="container well table_container " style="display: none;">
+                        <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> S/No </th>
+                                        <th scope="col"> Bank </th>
+                                        <th scope="col"> Intrest Rate <button onclick="inc()" ><span id = "sort" class="glyphicon glyphicon-arrow-up"></span></button> </th>
+                                        <th scope="col"> Priciple Amount</th>
+                                        <th scope="col"> Period (in months)</th>
+                                        <th scope="col"> EMI </th>
+                                        <th scope="col"> Total Amount </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(var i=0;i<=data.length-1;i++) { %>
+                                    <tr>
+                                        <th scope="row"><%= i+1 %></th>
+                                        <td><b><%= data[i].bank_name %></b></td>
+                                        <% var a = data[i].class+'_irate' %>
+                                        <td><b id="<%=a%>"><%= data[i].bank_intrest_rate %></b>%</td>
+                                        <td><b class="p_a"></b></td>
+                                        <td><b class="p_t"></b></td>
+                                        <% var b = data[i].class+'_emi' %>
+                                        <td><b id="<%= b %>"></b></td>
+                                        <% var c = data[i].class+'_total' %>
+                                        <td><b id="<%= c %>"></b></td>
+                                    </tr>
+                                    <% } %> 
+                                </tbody>
+                        </table> 
+                    </div>
+                    <div class="container well table_container_d " style="display: none;">
+                        <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> S/No </th>
+                                        <th scope="col"> Bank </th>
+                                        <th scope="col"> Intrest Rate <button onclick="dec()" ><span id = "sort_d" class="glyphicon glyphicon-arrow-down"></span></button> </th>
+                                        <th scope="col"> Priciple Amount</th>
+                                        <th scope="col"> Period (in months)</th>
+                                        <th scope="col"> EMI </th>
+                                        <th scope="col"> Total Amount </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% var cnt = 1%>
+                                    <% for(var i=data.length-1;i>=0;i--) { %>
+                                    <tr>
+                                        <th scope="row"><%= cnt %></th>
+                                        <td><b><%= data[i].bank_name %></b></td>
+                                        <% var a = data[i].class+'_irate' %>
+                                        <td><b id="<%=a%>"><%= data[i].bank_intrest_rate %></b>%</td>
+                                        <td><b class="p_a"></b></td>
+                                        <td><b class="p_t"></b></td>
+                                        <% var b = data[i].class+'_emi_d' %>
+                                        <td><b id="<%= b %>"></b></td>
+                                        <% var c = data[i].class+'_total_d' %>
+                                        <td><b id="<%= c %>"></b></td>
+                                    </tr>
+                                    <% cnt = cnt+1%>
+                                    <% } %>
+                                    
+                                </tbody>
         
+                        </table> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="row well">
+                <div class="col" style="padding: 20px">
+                        <h3 style="padding-bottom: 12px "><b>Leading Banks offering Education Loan</b></h3>
+                        <ul>
+                            <li>State Bank of India</li>
+                            <li>ICICI Bank</li>
+                            <li>HDFC Bank</li>
+                            <li>Axis Bank</li>
+                            <li>Punjab National Bank</li>
+                            <li>Canara Bank</li>
+                            <li>Bank of Baroda</li>
+                            <li>Bank of India</li>
+                            <li>Kotak Mahindra Bank</li>
+                            <li>Union Bank</li>
+                            <li>United Bank</li>
+                            <li>Central Bank</li>
+                            <li>Dena Bank</li>
+                            <li>UCO Bank</li>
+                            <li>Syndicate Bank</li>
+                            <li>Indian Overseas Bank</li>
+                        </ul>
+                </div>
+            </div>
+
+
+        </div>  
         
         <%- include('partials/footer') %>
+
+
+        <script>
+            function banks(){
+                document.getElementById("alert").style.display="none";
+                document.getElementsByClassName("table_container")[0].style.display="none";
+                    var p = document.getElementById('loan_amount').value;
+                    if(p===""){
+                    document.getElementById("alert").style.display="block";
+                    }
+                    else{
+                    document.getElementsByClassName("table_container")[0].style.display="block";
+                    document.getElementById('loan_amount').value="";
+                    var t = document.getElementById('loan_duration').value;
+                    if(t===""){
+                    t=60;}
+                    document.getElementById('loan_duration').value="";
+                    var ele = document.getElementsByClassName("p_a");
+                    for(i=0;i<ele.length;i++){
+                        ele[i].innerText = p;
+                    }
+                    var ele = document.getElementsByClassName("p_t");
+                    for(i=0;i<ele.length;i++){
+                        ele[i].innerText = t;
+                    }
+                    
+                
+                    var r = document.getElementById('sbi_irate').innerHTML;
+                    console.log(r)
+                    var emis = emi(p,t,r);
+                    document.getElementById('sbi_emi').innerHTML= emis;
+                    document.getElementById('sbi_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('sbi_emi_d').innerHTML= emis;
+                    document.getElementById('sbi_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    
+                    r = document.getElementById('hdfc_irate').innerHTML;
+                    var emis = emi(p,t,r);
+                    document.getElementById('hdfc_emi').innerHTML= emis;
+                    document.getElementById('hdfc_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('hdfc_emi_d').innerHTML= emis;
+                    document.getElementById('hdfc_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    
+                    r = document.getElementById('kotak_irate').innerHTML;
+                    var emis = emi(p,t,r);
+                    document.getElementById('kotak_emi').innerHTML= emis;
+                    document.getElementById('kotak_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('kotak_emi_d').innerHTML= emis;
+                    document.getElementById('kotak_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+
+                    r = document.getElementById('canara_irate').innerHTML;
+                    var emis = emi(p,t,r);
+                    document.getElementById('canara_emi').innerHTML= emis;
+                    document.getElementById('canara_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('canara_emi_d').innerHTML= emis;
+                    document.getElementById('canara_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    
+                    r = document.getElementById('bob_irate').innerHTML;
+                    var emis = emi(p,t,r);
+                    document.getElementById('bob_emi').innerHTML= emis;
+                    document.getElementById('bob_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('bob_emi_d').innerHTML= emis;
+                    document.getElementById('bob_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    
+                    r = document.getElementById('axis_irate').innerHTML;
+                    var emis = emi(p,t,r);
+                    document.getElementById('axis_emi').innerHTML= emis;
+                    document.getElementById('axis_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('axis_emi_d').innerHTML= emis;
+                    document.getElementById('axis_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    
+                    r = document.getElementById('icici_irate').innerHTML;
+                    var emis = emi(p,t,r);
+                    document.getElementById('icici_emi').innerHTML= emis;
+                    document.getElementById('icici_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('icici_emi_d').innerHTML= emis;
+                    document.getElementById('icici_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    
+                    r = document.getElementById('pnb_irate').innerHTML;
+                    var emis = emi(p,t,r);
+                    document.getElementById('pnb_emi').innerHTML= emis;
+                    document.getElementById('pnb_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('pnb_emi_d').innerHTML= emis;
+                    document.getElementById('pnb_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    
+                    r = document.getElementById('boi_irate').innerHTML;
+                    var emis = emi(p,t,r);
+                    document.getElementById('boi_emi').innerHTML= emis;
+                    document.getElementById('boi_total').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                    document.getElementById('boi_emi_d').innerHTML= emis;
+                    document.getElementById('boi_total_d').innerHTML= Number(Math.round(emis*t+'e2')+'e-2');
+                }
+            }
+            function emi(p,t,r){
+                var emi=0;
+            if(r>0)
+                emi = (p*(r/1200)*(1+(r/1200))**t)/(1-(1+(r/1200))**t);
+            console.log(emi)
+            if(emi<0)
+            {
+                emi = -emi;
+            }
+            return Number(Math.round(emi+'e2')+'e-2');
+            }
+            function inc(){
+                document.getElementsByClassName("table_container_d")[0].style.display="block";
+                document.getElementsByClassName("table_container")[0].style.display="none";
+            }
+            function dec(){
+                document.getElementsByClassName("table_container")[0].style.display="block";
+                document.getElementsByClassName("table_container_d")[0].style.display="none";
+            }
+        </script>
         
     </body>
 </html>

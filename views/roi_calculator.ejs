@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, , maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <title>ROI Calculator</title>
+</head>
+<body>
+    <%- include('partials/header') -%>
+    
+    <div class="container">
+        <div class="row well" style="padding: 24px">
+               <div class="col">
+                    <h3 style="padding: 12px">What is Return on Investment (ROI)?</h3>
+                    <p style="font-size: 18px; padding: 12px">
+                        Return on Investment (ROI) is a performance measure used to evaluate the efficiency of an 
+                        investment or compare the efficiency of a number of different investments. ROI tries to directly measure the 
+                        amount of return on a particular investment, relative 
+                        to the investment’s cost. To calculate ROI, the benefit (or return) 
+                        of an investment is divided by the cost of the investment. The result is expressed as a percentage or a ratio.
+                    </p>
+                </div>
+        </div>
+
+        <div class="row well">
+            <div class="col roi-calculator" style="width: 100%; height: 200px">
+            </div>
+        </div>
+
+        <div class="row well" style="padding: 24px ">
+            <div class="col">
+                <h3 style="padding: 12px">The return on investment formula:</h3>
+                <h4 style="text-align: center; padding: 12px">
+                    <b>ROI = (Current Value of Investment - Cost of Investment) / Cost of Investment</b>
+                </h4>
+                <p style="font-size: 18px; padding: 12px">
+                    In the above formula, "Current Value of Investment” refers to the proceeds obtained from the 
+                    sale of the investment of interest. Because ROI is measured 
+                    as a percentage, it can be easily compared with returns from other investments, allowing one to 
+                    measure a variety of types of investments against one another.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('partials/footer') -%>
+</body>
+</html>

@@ -73,7 +73,9 @@ Details.find({}, function(err, data){
     console.log(data[i].bank_name,data[i])
 
     //routes
-
+    app.get("/roi-calculator", function(req, res){
+        res.render("roi_calculator");
+    })
     app.get('/', function(req,res){
         res.render("home")
     })
@@ -223,7 +225,8 @@ Details.find({}, function(err, data){
 
 
 
-var port  = process.env.PORT || 8080;
+// var port  = process.env.PORT || 8080;
+var port  = process.env.PORT || 8081;
 console.log(port);
 
 
