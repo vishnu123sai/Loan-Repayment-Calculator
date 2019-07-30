@@ -156,6 +156,10 @@ Details.find({}, function(err, data){
     app.get("/roi_calculator", function(req, res){
         res.render("roi_calculator"); 
     });
+
+    app.get("/score-converter", function(req, res){
+        res.render("score_converter");
+    })
     
 
     app.post("/apply-loan",urlencodedParser, function(req, res){
