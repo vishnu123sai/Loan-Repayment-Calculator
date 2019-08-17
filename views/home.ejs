@@ -14,48 +14,35 @@
     <body>
         <%- include('partials/header') -%>
 
-        <br>
         <div class="vision_mission text-center">
             <h3>Foreignadmits is an initiative taken by a team of graduates and students from the world's best universities to provide complete guidance to students dreaming of joining these universities.</h3>
-        </div><br>
+        </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding-bottom: 5%;">
             <div class="row second-row visibility-class" id="second-row">
-                <div class="col-sm-4 srfc">
-                    <a href="/emi-calculator"> 
-                        Education Loan EMI Calculator
-                    </a>
-                </div>
-                <div class="col-sm-4 srfc">
-                    <a href="/compare_indian_loans"> 
-                        Compare Bank Loan Interest Rates
-                    </a>
-                </div>
-                <div class="col-sm-4 srtc">
-                    <a href="/eligibility-calculator"> 
-                            Education Loan Eligibility Calculator
-                    </a>
-                </div>
+                <button  class="col-sm-4 srfc" onclick="window.location.href = '/emi-calculator'"> 
+                    Education Loan EMI Calculator
+                </button>
+                <button  class="col-sm-4 srfc" onclick="window.location.href = '/compare_indian_loans'"> 
+                    Compare Bank Loan Interest Rates
+                </button>
+                <button  class="col-sm-4 srfc" onclick="window.location.href = '/eligibility-calculator'"> 
+                    Education Loan Eligibility Calculator
+                </button>
             </div>
             <div class="row third-row visibility-class" id="third-row">
-                <div class="col-sm-4 trfc">
-                        <a href="/student_tips">
-                            Money Saving Tips in Foreign
-                        </a>
-                </div>
-                <div class="col-sm-4 trsc">
-                    <a href="#"> 
-                            ROI Calculator
-                    </a>
-                </div>
-                <div class="col-sm-4 trtc">
-                    <a href="/education-loan-interest-rates"> 
-                        Education Loan Interest Rates
-                    </a>
-                </div>
+                <button  class="col-sm-4 trfc" onclick="window.location.href = '/student_tips'"> 
+                    Money Saving Tips in Foreign
+                </button>
+                <button  class="col-sm-4 trsc" onclick="window.location.href = '/roi-calculator'"> 
+                    ROI Calculator
+                </button>
+                <button  class="col-sm-4 trtc" onclick="window.location.href = '/education-loan-interest-rates'"> 
+                    Education Loan Interest Rates
+                </button>
             </div>
-        </div>   
-            
+        </div>
+
         <%- include('partials/footer') -%>
 
     </body>
