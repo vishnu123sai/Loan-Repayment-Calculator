@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Foreign admits Login Page </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, , maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <link rel="stylesheet", href="/static/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+    <%- include('partials/header') -%><br>
+<div class="container">
+  <div class="left-section">
+    <div class="header">
+      <h1 class="animation a1">Welcome Back!</h1>
+      <h4 class="animation a2">Log in for entering your dashboard.</h4>
+    </div>
+    <div class="form">
+      <input type="email" class="form-field animation a3" placeholder="Username">
+      <input type="password" class="form-field animation a4" placeholder="Password">
+      <p class="animation a5"><a href="#">Forgot Password</a></p>
+      <button class="animation a6">LOGIN</button>
+    </div>
+  </div>
+  <div class="right-section"></div>
+</div><br>
+
+<%- include('partials/footer') -%>  
+</body>
+</html>
