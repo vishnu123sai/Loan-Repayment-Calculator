@@ -6,32 +6,72 @@
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, , maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <link rel="stylesheet", href="/static/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet", href="/static/style.css"> -->
+
+        <style type="text/css">
+            .emi-container {
+                    padding: 5%;
+                }
+
+            .form-control {
+                    width: 100%;
+                }
+            
+               .frfc-ec, .frsc-ec {
+                    padding: 5%;
+                }      
+                
+            /*----------------------------------styling forms-----------------------------------*/
+            .form-group .form-control  {
+                    border: 2px solid #D6E2FF;
+                }
+
+            .form-group .form-control:focus  {
+                    border: 2px solid #5C8EFF;
+                }   
+
+            .form-group .submit-button {
+                    background-color: white; 
+                    color: rgba(0, 255, 25, 0.6); ; 
+                    border: 2px solid  rgba(0, 255, 25, 0.6);
+                    width: 70%;
+                    text-align: center;
+                }
+
+            .form-group .submit-button:hover {
+                    background-color : rgba(0, 255, 25, 0.6);
+                    color: white;
+                    margin: auto;
+                }
+
+
+            
+        </style>
     </head>
-    <body>
+    <body style="font-family: Roboto, sans-serif">
         <%- include('partials/header') -%>
         <br>
         
         <div class="container emi-container">
-            <div class="row well top-row" style="margin-bottom: 20px">
+            <div class="row well" style="margin-right:2%; margin-left:2%; margin-bottom: 20px; border-radius: 16px;background: #EBF1FF; border-width: 0px;">
                 <div class="col-sm col-md-6 frfc-ec">
                     <h3><b>Loan EMI Calculator : </b></h3>
                         <form action="/emi-calculator/emi-dashboard" method="POST" class="form-group">
-                            <label class="form_font"> Principal Amount :</label><br>
-                            <input type="number" class="form-control" name="loan_amount" min="1" required><br>
-                            <label class="form_font"> Time Period (in months) :</label><br>
+                            <label class="form_font" style="font-family: Roboto, sans-serif;"> Principal Amount :</label><br>
+                            <input type="number" class="form-control input_loan" name="loan_amount" min="1" required ><br>
+                            <label class="form_font" style="font-family: Roboto, sans-serif"> Time Period (in months) :</label><br>
                             <input type="number" class="form-control" name="period" min="1" required><br>
-                            <label class="form_font"> Interest Rate :</label><br>
+                            <label class="form_font" style="font-family: Roboto, sans-serif"> Interest Rate :</label><br>
                             <input type="number" step="0.01" class="form-control" min="0" max="100" name="intrest_rate" required><br>
-                            <input type="submit" class="btn btn-success form-control form_font" name="get_emi", value="Generate EMI">
+                            <div style="text-align: center;">
+                                <input type="submit" class="btn form_font submit-button" name="get_emi", value="Generate EMI" >
+                            </div>
                         </form>
                 </div>
 
                 <div class="col-sm col-md-6 frsc-ec">
-                    <h3 style="text-decoration: underline"><b>Education Loan EMI Calculator : </b></h3><br>
+                    <h3><b>Education Loan EMI Calculator : </b></h3><br>
                     <p style="font-size:16px;text-indent: 50px;text-align: justify">
                              Education Loan EMI Calculator is a smart tool that calculates your monthly EMI amount 
                              payable to the lender. It’s basically a slider where you enter the values; 
@@ -41,10 +81,10 @@
                     </p>
                 </div>
             </div>
-            <div class="row well">
+            <div class="row well" style="margin-right:2%; margin-left:2%; border-radius: 16px; background: #EBF1FF; border-width: 0px;">
                 <div class="col">
-                    <div style="padding:30px;line-height: 1.6">
-                        <h3 style="text-decoration: underline"><b>Features of our Education Loan EMI Calculator : </b></h3><br>
+                    <div style="padding:5%;line-height: 1.6">
+                        <h3><b>Features of our Education Loan EMI Calculator : </b></h3><br>
                             <ul style="font-size:16px;">
                                 <li>Candidate can see what is the EMI and Intrest Amount for different intrest rates.</li>
                                 <li>Candidate can see a visual diagram which shows principle amount vs Intrest amount.</li>
@@ -63,5 +103,8 @@
             </div>
         </div>
         <%- include('partials/footer') %>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </body>
 </html>

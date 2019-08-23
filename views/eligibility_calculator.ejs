@@ -7,22 +7,51 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <!-- <link rel="stylesheet", href="/static/style.css" type="text/css"> -->
         <style>
                  li {
                     margin: 3px;
-                }
+                    }
                 .container {
                     margin: 0% 0% 0% 0%;
                     padding: 5% 5% 5% 5%;
                     overflow-x: none;
-                }
+                    }
                 .eligibility_calci {
                         width: 80%;
                         padding: 3%;
                         margin: auto;
                         max-width: 500px;
-                }
+                    }
+
+                .container .well {
+                        background: #EBF1FF; 
+                        border-width: 0px; 
+                        border-radius: 16px;
+                    }
+                .form-group .form-control  {
+                    border: 2px solid #D6E2FF;
+                    margin-bottom: 8px;
+                    }
+
+                .form-group .form-control:focus  {
+                        border: 2px solid #5C8EFF;
+                    }   
+
+                .form-group .submit-button {
+                        background-color: white; 
+                        color: rgba(0, 255, 25, 0.6); ; 
+                        border: 2px solid  rgba(0, 255, 25, 0.6);
+                        width: 70%;
+                        text-align: center;
+                    }
+
+                .form-group .submit-button:hover {
+                        background-color : rgba(0, 255, 25, 0.6);
+                        color: white;
+                        margin: auto;
+                    }
                 @media screen and (max-width: 1150px) {
                     /* .eligibility_calci{
                         margin: 0%;
@@ -37,15 +66,15 @@
                 }
         </style>
     </head>
-    <body>
+    <body style="font-family: Roboto, sans-serif">
         <%- include('partials/header') -%>
         <br>
         <div class="container" style="width:100%; padding: 6%; margin: 0%">
             <div class="row well" style="padding: 4%">
                 <div class="col">
-                        <h3><b style="text-decoration: underline">Education Loan Eligibility : </b></h3>
+                        <h3><b>Education Loan Eligibility : </b></h3>
                         <p style="font-size:16px;text-indent: 50px;text-align: justify; padding: 12px" >Since these loans are offered to brilliant students who are unable to meet the expenses of their higher education, the basic education loan eligibility is the academic excellence and achievements of the students. In other words, the eligibility of the applicants are assessed on the basis of their academic performance as cited in the mark sheets of previous exams.</p>
-                        <h3><b style="text-decoration: underline">Eligibility criteria : </b></h3>
+                        <h3><b>Eligibility criteria : </b></h3>
                         <p style="font-size:16px;text-indent: 50px;text-align: justify; padding: 12px" >The vital education loan eligibility criteria that the candidates need to fulfil to get approval for the loan are listed out here:
                             <ul style="font-size:16px;">
                                 <li>The candidate applying for the loan must be a resident of India.</li>
@@ -60,12 +89,12 @@
             </div>
             <div class="row well" style="padding: 4%">
                 <div class="col">
-                        <h3><b style="text-decoration: underline">Education Loan Documentation : </b></h3>
+                        <h3><b>Education Loan Documentation : </b></h3>
                         <p style="font-size:16px;text-indent: 50px;text-align: justify; padding: 12px;" >As told earlier, education loan documentation doesn’t involve any hard-core paperwork. 
                             The process is simple and can be conducted online without paying physical visits to the banks. 
                             However, the process might vary depending on the criteria set by various banks or lending organisations. 
                             Also, the banks being very strict in their terms, failure to submit the mandated documents will lead to rejection </p>
-                        <h4><b style="text-decoration: underline">Required Documents : </b></h4>
+                        <h4><b>Required Documents : </b></h4>
                         <div style="padding: 12px">
                             <p style="font-size: 16px">Here are the mandatory documents that a student need to provide to the banks while applying for a student loan</p>
                                 <ul style="font-size:16px;">
@@ -98,7 +127,7 @@
             </div>
             <div class="row well">
                 <div class="col">
-                    <h3 style="text-decoration: underline;text-align: center">Education Loan Eligibility Calculator</h3>
+                    <h3 style="text-align: center"><b>Education Loan Eligibility Calculator</b></h3>
                     <div class="row">
                         <div class="col eligibility_calci">
                             <form class="form-group" action="/eligibility-calculator" method="POST">
@@ -107,34 +136,36 @@
                                 <label>Country : </label>
                                 <input type="text" class="form-control" name="country" placeholder="Country" required>
                                 <label>Age : </label>
-                                <input type="number" class="form-control" name="age" placeholder="Age" required><br>
+                                <input type="number" class="form-control" name="age" placeholder="Age" required>
                                 <label>Academics : </label>
-                                <select name="academics" required>
+                                <select class="form-control" name="academics" required>
                                     <option>Excellent</option>
                                     <option>Good</option>
                                     <option>Poor</option>
-                                </select><br><br>
+                                </select>
                                 <label>University Admission : </label>
-                                <select name="admission" required>
+                                <select class="form-control" name="admission" required>
                                     <option>Yes</option>
                                     <option>No</option>
-                                </select><br><br>
+                                </select>
                                 <label>Sufficient Income : </label>
-                                <select name="income" required>
+                                <select class="form-control" name="income" required>
                                     <option>Yes</option>
                                     <option>No</option>
-                                </select><br><br>
+                                </select>
                                 
-                                <input type="submit" class="form-control btn btn-success" value="Check Eligibility">
+                                <div style="text-align: center; margin-top: 16px">
+                                    <input type="submit" class="btn form_font submit-button" value="Check Eligibility">
+                                </div>
                             </form>
                         </div>
                         <div>
                             <% if(req==="POST"){ %>
                                 <% if(eligible===true){ %>
-                                    <h4 class="text-center alert-success" style="padding: 4px;"><%= msg %></h4>
+                                    <h4 class="text-center alert-success" style="color: white; padding: 8px; font-size: 18px; background-color: rgba(0, 255, 25, 0.6); border-radius: 6px"><%= msg %></h4>
                                 <% } %>
                                 <% if(eligible===false){ %>
-                                    <h4 class="text-center alert-danger" ><%= msg %></h4>
+                                    <h4 class="text-center alert-danger" style="color: white; padding: 8px; font-size: 18px; background: rgba(255, 46, 3, 0.6);; border-radius: 6px"><%= msg %></h4>
                                 <% } %>
                             <% } %>
                         <% if(req==="POST"){ %>
@@ -146,7 +177,7 @@
             </div>
             <div class="row well">
                 <div class="col">
-                    <h3 style="text-decoration: underline;text-align: center; padding-bottom: 16px">Education Loan Eligibility Requirement Table</h3>
+                    <h3 style="text-align: center; padding-bottom: 16px"><b>Education Loan Eligibility Requirement Table</b></h3>
                     <div class="col">
                         <table class="table">  
                             <tbody>
@@ -201,5 +232,4 @@
 
     </body>
 </html>
-
 
