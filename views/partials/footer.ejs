@@ -7,15 +7,42 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        <link rel="stylesheet", href="/static/style.css" type="text/css">
-        
+        <!-- <link rel="stylesheet", href="/static/style.css" type="text/css"> -->
+        <style>
+        .footer-container {
+                padding: 24px 0px 24px 0px;
+                /* display: flex;
+                justify-content: center; */
+            }
+
+            .footer-leftside {
+                display: flex;
+                justify-content: space-around;
+                }
+
+            .footer-centerside {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .footer-rightside {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            @media screen and (max-width:768px) {
+                .footer-leftside, .footer-centerside, .footer-rightside {
+                    text-align: center;
+                }
+            }
+        </style>
     </head>
     <body>
-            <footer style="width: 100%;font-weight: bold">
-                    <div class="row footer-container" style="background-color: white; margin: 0%">
+            <footer style="width: 100%;">
+                    <div class="row footer-container" style="background-color: #D6E2FF; margin: 0%">
                         <div class="col-md-4 footer-leftside">
-                            <ul style="list-style-type: none;  padding: 0px">
-                                <li><h4 style="text-decoration:underline"><b>Menu</b></h4></li>
+                            <ul style="list-style-type: none;  padding: 0px; font-weight: initial">
+                                <li><h4 style="color: rgba(255, 44, 0, 0.86);"><b>Menu</b></h4></li>
                                 <li> <a href="/home">Home</a></li>
                                 <li><a href="https://www.foreignadmits.com/contact">Contact us</a></li>
                                 <li><a href="https://www.foreignadmits.com/">About us</a></li>
@@ -26,8 +53,8 @@
 
                         <div  class="col-md-4 footer-centerside">
                             <div>
-                                <ul style="list-style-type: none;  padding: 0px">
-                                    <h4 style="text-decoration:underline"><b>Calcultors</b></h4>
+                                <ul style="list-style-type: none;  padding: 0px; font-weight: initial">
+                                    <h4 style=" color:  rgba(255, 44, 0, 0.86);"><b>Calcultors</b></h4>
                                     <li> <a href="/emi-calculator">EMI Calculator</a><br></li>
                                     <li><a href="/eligibility-calculator">Eligibility Calculator</a></li>
                                     <li><a href="/roi-calculator">ROI Calculator</a></li>
@@ -36,8 +63,8 @@
                             </div>
                         </div>
                         <div  class="col-md-4 footer-rightside">
-                            <ul style="list-style-type: none; padding: 0px">
-                                <li><h4 style="text-decoration:underline"><b>Social Media</b></h4></li>
+                            <ul style="list-style-type: none; padding: 0px; font-weight: initial">
+                                <li><h4 style=" color:  rgba(255, 44, 0, 0.86);"><b>Social Media</b></h4></li>
                                 <li><a href="https://www.facebook.com/foreignadmits/">Facebook</a></li>
                                 <li><a href="https://www.linkedin.com/company/foreignadmits/">Linkdin</a></li>
                                 <li><a href="https://www.instagram.com/foreignadmits/">Instagram</a></li>
@@ -46,7 +73,7 @@
 
                         </div>
                     </div>
-                    <h4 style="background-color: #fff; margin: 0px; padding: 0px 0px 12px 0px; text-align: center">&copy; 2019 Foreginadmits | All Rights Reserved</h4>
+                    <h4 style="background-color: #D6E2FF; margin: 0px; padding: 0px 0px 12px 0px; text-align: center">&copy; 2019 Foreginadmits | All Rights Reserved</h4>
                 </footer>
 
     </body>

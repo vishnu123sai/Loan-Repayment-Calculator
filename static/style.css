@@ -9,94 +9,30 @@ body{
     /* background-color: #97caef */
     /* background-color: #2f2fa2   */
     /* background-color: #659dbd; */
-    background-color: #5C8EFF;
+    /* background-color: #5C8EFF; */
+    background-color: white;
 }
 
 /* header */
-#logo{
-    width: 220px;
-    height: 115px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-}
+
 
 /* ////////////////////////////////////////////////Start footer//////////////////////////////////////////////// */
 
-.footer-container {
-    padding: 24px 0px 24px 0px;
-    /* display: flex;
-    justify-content: center; */
-}
 
-.footer-leftside {
-    display: flex;
-    justify-content: space-around;
-    }
-
-.footer-centerside {
-    display: flex;
-    justify-content: space-around;
-}
-
-.footer-rightside {
-    display: flex;
-    justify-content: space-around;
-}
-
-@media screen and (max-width:768px) {
-    .footer-leftside, .footer-centerside, .footer-rightside {
-        text-align: center;
-    }
-}
 
 /* ////////////////////////////////////////////////End footer//////////////////////////////////////////////// */
 
 /* ////////////////////////////////////////////////Start emi-calculator//////////////////////////////////////////////// */
-.feature-container, .emi-container {
-    padding: 5%;;
-}
 
-.form-control {
-    width: 100%;
-}
-
-.frfc-ec, .frsc-ec {
-    padding: 5%;
-}
 /* ////////////////////////////////////////////////End emi-calculator//////////////////////////////////////////////// */
 
 /* ////////////////////////////////////////////////End emi-dashboard//////////////////////////////////////////////// */
 
-.frfc-ed, .frsc-ed {
-    margin: 3%;
-    width: 43%;
-}
-
-.srfc-ed {
-    margin-top: 8.5%;
-}
-
-@media screen and (max-width: 768px) {
-    .frfc-ed, .frsc-ed {
-        margin: 0%;
-        width: 100%;
-    }
-}
-
 /* ////////////////////////////////////////////////End emi-dashboard//////////////////////////////////////////////// */
-.header-logo {
-    background-color: white;
-}
 
 .vision_mission{
-    margin: 0px 150px;
-    padding: 0px 150px 40px;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-style: oblique;
+    color: rgba(68, 68, 68, 0.897);
+    font-family: Roboto, sans-serif;
 }
 
 .calculator{
