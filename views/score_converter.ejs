@@ -1,323 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <title>TOFEL to IELTS Score converters</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <title>TOFEL to IELTS Score converters</title>
 
+        <style>
+            /*-------------------------Styling elements-------------------------*/
+            .container .select-exam {
+                margin: 2%;
+                border-radius: 16px; 
+                border-width: 0px;
+                background-color: rgba(3, 78, 255, 0.08); 
+            }
+            h3 {
+                text-align: center;
+            }
+            p::first-letter {
+                font-size: 32px;
+            }
 
+            #tables  .score-tables {
+                width: 80%; 
+                padding: 3%;
+                margin-left: auto; 
+                margin-right: auto;
+                border-radius: 16px;
+                border-width: 0px;
+                background-color: rgba(3, 78, 255, 0.08); 
+            }
 
-    <style>
-        h3 {
-            /* padding: 18px; */
-            text-align: center;
-        }
-        p::first-letter {
-            /* color: #5CE3FF; */
-            font-size: 32px;
-        }
-        
-        .flex-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding-left: 20%;
-            padding-right: 20%;
-        }
-
-
-        .button-disable {
-            width: 96px;
-            height: 42px;
-            color: rgb(196, 196, 196);
-            background-color: white;
-            border: 2px solid rgb(196, 196, 196);
-            border-radius: 12px;
-        }
-
-        .before-select {
-            width: 96px;
-            height: 42px;
-            background-color: white;
-            border: 2px solid blue;
-            border-radius: 12px;
-        }
-
-        .after-select  {
-            width: 96px;
-            height: 42px;
-            color: white;
-            background-color: blue;
-            border: 2px solid blue;
-            border-radius: 12px;            
-        }
-
-        #tofel-score, #ielts-score {
-            display: none;
-        }
-
-        #result {
-            font-size: 22px;
-            display: none;
-            justify-content: center;
-        }
-
-
-
-    </style>
-</head>
-<body>
-
-    <%- include("partials/header.ejs") -%>
-
-    <div class="container" style="padding: 5%">
-        <div class="row">
-            <div class="col">
-                <p style="font-size: 20px; text-align: justify; padding: 20px; text-indent: 20%; color: white">
-                    TOEFL and IELTS are used to measure your English language skills. It's a requirement for English speaking countries (or courses where the language of instruction is English). These exams are required for non-native English speakers (countries where the native language is not English: example India, China, South Korea, Taiwan, Nigeria, Germany, Middle Eastern Countries..etc. Generally).
-                    Historically IELTS was popular in Europe, Australia, and Canadian region, while TOEFL was popular in the USA. Now both are widely accepted in most universities (so as a student you may not have to give both tests).
-                </p>
-            </div>
-        </div>
-
-        <div class="row well" style="background-color: white;">
-            <div style="font-size: 20px; text-align: center">Please select the exam</div>
-            <div class="flex-container" id="exam">
-                <button class="before-select" onclick="handleCall(this, value)" value="exam" style="margin: 5px">TOFEL</button>
-                <button class="before-select" onclick="handleCall(this, value)" value="exam" style="margin: 5px">IELTS</button>
-            </div>
-
-            <div id="tofel-score">
-                <div style="font-size: 20px; text-align: center">Please select Score</div>                
-                <div class="flex-container">
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">118-120</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">115-117</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">110-114</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">102-109</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">94-101</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">79-93</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">60-78</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">46-59</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">35-45</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">32-35</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">0-31</button>
-                </div>
-            </div>
+            thead {
+                background-color: rgba(214, 226, 255, 0.76);
+            }
             
-            <div id="ielts-score">
-                <div style="font-size: 20px; text-align: center">Please select Score</div>       
-                <div class="flex-container" >
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">9</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">8.5</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">8</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">7.5</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">7</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">6.5</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">6</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">5.5</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">5</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">4.5</button>
-                    <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">0-4</button>
+            .flex-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding-left: 20%;
+                padding-right: 20%;
+            }
+
+            /*-------------------------Styles used by JavaScript------------------------- */
+            .button-disable {
+                width: 96px;
+                height: 42px;
+                color: rgb(196, 196, 196);
+                background-color: white;
+                border: 2px solid rgb(196, 196, 196);
+                border-radius: 12px;
+            }
+
+            .before-select {
+                width: 96px;
+                height: 42px;
+                background-color: white;
+                border: 2px solid rgba(92, 142, 255, 0.55);
+                border-radius: 12px;
+            }
+
+            .after-select  {
+                width: 96px;
+                height: 42px;
+                color: white;
+                background-color: rgba(3, 78, 255, 0.77);
+                border: 2px solid rgba(3, 78, 255, 0.77);
+                border-radius: 12px;            
+            }
+
+            #tofel-score, #ielts-score {
+                display: none;
+            }
+
+            #result {
+                font-size: 22px;
+                display: none;
+                justify-content: center;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <%- include("partials/header.ejs") -%>
+
+        <div class="container" style="padding: 5%">
+            <div class="row">
+                <div class="col">
+                    <p style="font-size: 20px; text-align: justify; padding: 20px; text-indent: 20%; color: black">
+                        TOEFL and IELTS are used to measure your English language skills. It's a requirement for English speaking countries (or courses where the language of instruction is English). These exams are required for non-native English speakers (countries where the native language is not English: example India, China, South Korea, Taiwan, Nigeria, Germany, Middle Eastern Countries..etc. Generally).
+                        Historically IELTS was popular in Europe, Australia, and Canadian region, while TOEFL was popular in the USA. Now both are widely accepted in most universities (so as a student you may not have to give both tests).
+                    </p>
                 </div>
             </div>
 
-            <div id="result"></div>
-            <div id="info" style="font-size: 20px; display: none; text-align: center">Please check below tables more information</div>
-
-        </div>
-
-        <div id="tables" style="display: none;">
-            <div class="row well total-score" style="background-color: white; width: 80%; margin-left: auto; margin-right: auto">
-                <div class="col">
-                    <h3>Total Score</h3>
-                    <table class="table" style="text-align: center">
-                        <thead>
-                            <tr>
-                                <td><b>TOFEL</b></td>
-                                <td><b>IELTS</b></td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>118-120</td>
-                                <td>9</td>
-                            </tr>
-                            <tr>
-                                <td>115-117</td>
-                                <td>8.5</td>
-                            </tr>
-                            <tr>
-                                <td>110-114</td>
-                                <td>8</td>
-                            </tr>
-                            <tr>
-                                <td>102-109</td>
-                                <td>7.5</td>
-                            </tr>
-                            <tr>
-                                <td>94-101</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>79-93</td>
-                                <td>6.5</td>
-                            </tr>
-                            <tr>
-                                <td>60-78</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>46-59</td>
-                                <td>5.5</td>
-                            </tr>
-                            <tr>
-                                <td>35-45</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>32-35</td>
-                                <td>4.5</td>
-                            </tr>
-                            <tr>
-                                <td>0-31</td>
-                                <td>0-4</td>
-                            </tr>
-                        </tbody>
-
-                    </table>
+            <div class="row well select-exam">
+                <div style="font-size: 20px; text-align: center">Please select the exam</div>
+                <div class="flex-container" id="exam">
+                    <button class="before-select" onclick="handleCall(this, value)" value="exam" style="margin: 5px">TOFEL</button>
+                    <button class="before-select" onclick="handleCall(this, value)" value="exam" style="margin: 5px">IELTS</button>
                 </div>
+
+                <div id="tofel-score">
+                    <div style="font-size: 20px; text-align: center">Please select Score</div>                
+                    <div class="flex-container">
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">118-120</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">115-117</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">110-114</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">102-109</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">94-101</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">79-93</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">60-78</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">46-59</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">35-45</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">32-35</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="tofel-score" style="margin: 5px">0-31</button>
+                    </div>
+                </div>
+                
+                <div id="ielts-score">
+                    <div style="font-size: 20px; text-align: center">Please select Score</div>       
+                    <div class="flex-container" >
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">9</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">8.5</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">8</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">7.5</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">7</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">6.5</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">6</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">5.5</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">5</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">4.5</button>
+                        <button class="before-select"onclick="handleCall(this, value)" value="ielts-score" style="margin: 5px">0-4</button>
+                    </div>
+                </div>
+
+                <div id="result"></div>
+                <div id="info" style="font-size: 20px; display: none; text-align: center">Please check below tables more information</div>
+
             </div>
 
-            <div class="row well " style="background-color: white; width: 80%; margin-left: auto; margin-right: auto">
-                <div class="col">
-                    <h3>Reading</h3>
-                    <table class="table" style="text-align: center">
-                        <thead>
-                            <td><b>TOFEL</b></td>
-                            <td><b>IELTS</b></td>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>30</td>
-                                <td>9</td>
-                            </tr>
-                            <tr>
-                                <td>29</td>
-                                <td>8.5</td>
-                            </tr>
-                            <tr>
-                                <td>29</td>
-                                <td>8</td>
-                            </tr>
-                            <tr>
-                                <td>27-28</td>
-                                <td>7.5</td>
-                            </tr>
-                            <tr>
-                                <td>24-26</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>19-23</td>
-                                <td>6.5</td>
-                            </tr>
-                            <tr>
-                                <td>13-18</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>8-12</td>
-                                <td>5.5</td>
-                            </tr>
-                            <tr>
-                                <td>4-7</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>4.5</td>
-                            </tr>
-                            <tr>
-                                <td>0-2</td>
-                                <td>0-4</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="row well" style="background-color: white; width: 80%; margin-left: auto; margin-right: auto">
-                <div class="col">
-                    <h3>Writing</h3>
-                    <table class="table" style="text-align: center">
+            <div id="tables" style="display: none;">
+                <div class="row well score-tables" >
+                    <div class="col">
+                        <h3>Total Score</h3>
+                        <table class="table" style="text-align: center;">
                             <thead>
-                                <td><b>TOFEL</b></td>
-                                <td><b>IELTS</b></td>
+                                <tr>
+                                    <td><b>TOFEL</b></td>
+                                    <td><b>IELTS</b></td>
+                                </tr>
                             </thead>
-        
+
                             <tbody>
                                 <tr>
-                                    <td>30</td>
+                                    <td>118-120</td>
                                     <td>9</td>
                                 </tr>
                                 <tr>
-                                    <td>30</td>
+                                    <td>115-117</td>
                                     <td>8.5</td>
                                 </tr>
                                 <tr>
-                                    <td>30</td>
+                                    <td>110-114</td>
                                     <td>8</td>
                                 </tr>
                                 <tr>
-                                    <td>29</td>
+                                    <td>102-109</td>
                                     <td>7.5</td>
                                 </tr>
                                 <tr>
-                                    <td>27-28</td>
+                                    <td>94-101</td>
                                     <td>7</td>
                                 </tr>
                                 <tr>
-                                    <td>24-26</td>
+                                    <td>79-93</td>
                                     <td>6.5</td>
                                 </tr>
                                 <tr>
-                                    <td>21-23</td>
+                                    <td>60-78</td>
                                     <td>6</td>
                                 </tr>
                                 <tr>
-                                    <td>18-20</td>
+                                    <td>46-59</td>
                                     <td>5.5</td>
                                 </tr>
                                 <tr>
-                                    <td>14-17</td>
+                                    <td>35-45</td>
                                     <td>5</td>
                                 </tr>
                                 <tr>
-                                    <td>12-13</td>
+                                    <td>32-35</td>
                                     <td>4.5</td>
                                 </tr>
                                 <tr>
-                                    <td>12-13</td>
+                                    <td>0-31</td>
                                     <td>0-4</td>
                                 </tr>
                             </tbody>
-                        </table>
-                </div>
-            </div>
 
-            <div class="row well" style="background-color: white; width: 80%; margin-left: auto; margin-right: auto">
-                <div class="col">
-                    <h3>Listening</h3>
-                    <table class="table" style="text-align: center">
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row well  score-tables" >
+                    <div class="col">
+                        <h3>Reading</h3>
+                        <table class="table" style="text-align: center">
                             <thead>
                                 <td><b>TOFEL</b></td>
                                 <td><b>IELTS</b></td>
                             </thead>
-        
+
                             <tbody>
                                 <tr>
                                     <td>30</td>
@@ -328,11 +227,11 @@
                                     <td>8.5</td>
                                 </tr>
                                 <tr>
-                                    <td>28</td>
+                                    <td>29</td>
                                     <td>8</td>
                                 </tr>
                                 <tr>
-                                    <td>27</td>
+                                    <td>27-28</td>
                                     <td>7.5</td>
                                 </tr>
                                 <tr>
@@ -340,19 +239,19 @@
                                     <td>7</td>
                                 </tr>
                                 <tr>
-                                    <td>20-23</td>
+                                    <td>19-23</td>
                                     <td>6.5</td>
                                 </tr>
                                 <tr>
-                                    <td>12-19</td>
+                                    <td>13-18</td>
                                     <td>6</td>
                                 </tr>
                                 <tr>
-                                    <td>7-11</td>
+                                    <td>8-12</td>
                                     <td>5.5</td>
                                 </tr>
                                 <tr>
-                                    <td>4-6</td>
+                                    <td>4-7</td>
                                     <td>5</td>
                                 </tr>
                                 <tr>
@@ -365,194 +264,312 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
                 </div>
+
+                <div class="row well score-tables" >
+                    <div class="col">
+                        <h3>Writing</h3>
+                        <table class="table" style="text-align: center">
+                                <thead>
+                                    <td><b>TOFEL</b></td>
+                                    <td><b>IELTS</b></td>
+                                </thead>
+            
+                                <tbody>
+                                    <tr>
+                                        <td>30</td>
+                                        <td>9</td>
+                                    </tr>
+                                    <tr>
+                                        <td>30</td>
+                                        <td>8.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>30</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>29</td>
+                                        <td>7.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>27-28</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24-26</td>
+                                        <td>6.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>21-23</td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18-20</td>
+                                        <td>5.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14-17</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12-13</td>
+                                        <td>4.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12-13</td>
+                                        <td>0-4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+
+                <div class="row well score-tables" >
+                    <div class="col">
+                        <h3>Listening</h3>
+                        <table class="table" style="text-align: center">
+                                <thead>
+                                    <td><b>TOFEL</b></td>
+                                    <td><b>IELTS</b></td>
+                                </thead>
+            
+                                <tbody>
+                                    <tr>
+                                        <td>30</td>
+                                        <td>9</td>
+                                    </tr>
+                                    <tr>
+                                        <td>29</td>
+                                        <td>8.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>28</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>27</td>
+                                        <td>7.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24-26</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20-23</td>
+                                        <td>6.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12-19</td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7-11</td>
+                                        <td>5.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4-6</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>4.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0-2</td>
+                                        <td>0-4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            
+                <div class="row well score-tables" >
+                    <div class="col">
+                        <h3>Speaking</h3>
+                        <table class="table" style="text-align: center">
+                                <thead>
+                                    <td><b>TOFEL</b></td>
+                                    <td><b>IELTS</b></td>
+                                </thead>
+            
+                                <tbody>
+                                    <tr>
+                                        <td>30</td>
+                                        <td>9</td>
+                                    </tr>
+                                    <tr>
+                                        <td>28-29</td>
+                                        <td>8.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>26-27</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24-25</td>
+                                        <td>7.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>23</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20-22</td>
+                                        <td>6.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18-19</td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16-17</td>
+                                        <td>5.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14-15</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12-13</td>
+                                        <td>4.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0-11</td>
+                                        <td>0-4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>        
             </div>
-        
-            <div class="row well" style="background-color: white; width: 80%; margin-left: auto; margin-right: auto">
-                <div class="col">
-                    <h3>Speaking</h3>
-                    <table class="table" style="text-align: center">
-                            <thead>
-                                <td><b>TOFEL</b></td>
-                                <td><b>IELTS</b></td>
-                            </thead>
-        
-                            <tbody>
-                                <tr>
-                                    <td>30</td>
-                                    <td>9</td>
-                                </tr>
-                                <tr>
-                                    <td>28-29</td>
-                                    <td>8.5</td>
-                                </tr>
-                                <tr>
-                                    <td>26-27</td>
-                                    <td>8</td>
-                                </tr>
-                                <tr>
-                                    <td>24-25</td>
-                                    <td>7.5</td>
-                                </tr>
-                                <tr>
-                                    <td>23</td>
-                                    <td>7</td>
-                                </tr>
-                                <tr>
-                                    <td>20-22</td>
-                                    <td>6.5</td>
-                                </tr>
-                                <tr>
-                                    <td>18-19</td>
-                                    <td>6</td>
-                                </tr>
-                                <tr>
-                                    <td>16-17</td>
-                                    <td>5.5</td>
-                                </tr>
-                                <tr>
-                                    <td>14-15</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>12-13</td>
-                                    <td>4.5</td>
-                                </tr>
-                                <tr>
-                                    <td>0-11</td>
-                                    <td>0-4</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
-            </div>        
         </div>
-    </div>
 
-    <%- include("partials/footer.ejs") -%>
+        <%- include("partials/footer.ejs") -%>
 
-    <script>
-        let anyExamSelected = false;
-        let anyTofelscoreSelected = false;
-        let anyIeltsscoreSelected = false;
-        let scores = {
-            "118-120" : "9",
-            "115-117" : "8.5",
-            "110-114" : "8",
-            "102-109" : "7.5",
-            "94-101" : "7",
-            "79-93": "6.5",
-            "60-78" : "6",
-            "46-59" : "5.5",
-            "35-45" : "5",
-            "32-35" : "4.5",
-            "0-31" : "0-4",
-            "9" : "118-120",
-            "8.5" : "115-117",
-            "8" : "110-114",
-            "7.5" : "102-109",
-            "7" : "94-101",
-            "6.5" : "79-93" ,
-            "6" : "60-78",
-            "5.5" : "46-59" ,
-            "5" : "35-45",
-            "4.5" : "32-35",
-            "0-4" : "0-31" ,
-        }
+        <script>
+            let anyExamSelected = false;
+            let anyTofelscoreSelected = false;
+            let anyIeltsscoreSelected = false;
+            let scores = {
+                "118-120" : "9",
+                "115-117" : "8.5",
+                "110-114" : "8",
+                "102-109" : "7.5",
+                "94-101" : "7",
+                "79-93": "6.5",
+                "60-78" : "6",
+                "46-59" : "5.5",
+                "35-45" : "5",
+                "32-35" : "4.5",
+                "0-31" : "0-4",
+                "9" : "118-120",
+                "8.5" : "115-117",
+                "8" : "110-114",
+                "7.5" : "102-109",
+                "7" : "94-101",
+                "6.5" : "79-93" ,
+                "6" : "60-78",
+                "5.5" : "46-59" ,
+                "5" : "35-45",
+                "4.5" : "32-35",
+                "0-4" : "0-31" ,
+            }
 
-        function handleCall(t, val) {         
-            if ( val == "exam"){
-                if (anyExamSelected){
-                    t.className = "before-select";
-                    var cl = document.getElementById("exam").querySelectorAll(".button-disable");
-                    cl.forEach(function(element){
-                        element.className = "before-select";
-                        element.disabled = false;
-                        })
-                    anyExamSelected = false;
-                    t.textContent == "TOFEL" ? document.getElementById("tofel-score").style.display = "none" : document.getElementById("ielts-score").style.display = "none";
+            function handleCall(t, val) {         
+                if ( val == "exam"){
+                    if (anyExamSelected){
+                        t.className = "before-select";
+                        var cl = document.getElementById("exam").querySelectorAll(".button-disable");
+                        cl.forEach(function(element){
+                            element.className = "before-select";
+                            element.disabled = false;
+                            })
+                        anyExamSelected = false;
+                        t.textContent == "TOFEL" ? document.getElementById("tofel-score").style.display = "none" : document.getElementById("ielts-score").style.display = "none";
 
-                    document.getElementById("result").style.display = "none" ;
-                    document.getElementById("info").style.display = "none";
-                    document.getElementById("tables").style.display = "none";
+                        document.getElementById("result").style.display = "none" ;
+                        document.getElementById("info").style.display = "none";
+                        document.getElementById("tables").style.display = "none";
+                        }
+                    else{
+                        t.className = "after-select";
+                        var cl = document.getElementById("exam").querySelectorAll(".before-select");
+                        cl.forEach(function(element){
+                            element.className = "button-disable";
+                            element.disabled = true;
+                            })
+                        anyExamSelected = true;
+                        t.textContent == "TOFEL" ? document.getElementById("tofel-score").style.display = "block" : document.getElementById("ielts-score").style.display = "block";
+                        
+                        document.getElementById("result").style.display = "none" ;
+                        document.getElementById("info").style.display = "none";
+                        document.getElementById("tables").style.display = "none";
                     }
-                else{
-                    t.className = "after-select";
-                    var cl = document.getElementById("exam").querySelectorAll(".before-select");
-                    cl.forEach(function(element){
-                        element.className = "button-disable";
-                        element.disabled = true;
-                        })
-                    anyExamSelected = true;
-                    t.textContent == "TOFEL" ? document.getElementById("tofel-score").style.display = "block" : document.getElementById("ielts-score").style.display = "block";
                     
-                    document.getElementById("result").style.display = "none" ;
-                    document.getElementById("info").style.display = "none";
-                    document.getElementById("tables").style.display = "none";
                 }
-                
-            }
 
 
-            if ( val == "tofel-score"){
-                if (anyTofelscoreSelected){
-                    t.className = "before-select";
-                    var cl = document.getElementById("tofel-score").querySelectorAll(".button-disable");
-                    cl.forEach(function(element){
-                        element.className = "before-select";
-                        element.disabled = false;
-                        })
-                    anyTofelscoreSelected = false;
+                if ( val == "tofel-score"){
+                    if (anyTofelscoreSelected){
+                        t.className = "before-select";
+                        var cl = document.getElementById("tofel-score").querySelectorAll(".button-disable");
+                        cl.forEach(function(element){
+                            element.className = "before-select";
+                            element.disabled = false;
+                            })
+                        anyTofelscoreSelected = false;
+                        }
+                    else{
+                        t.className = "after-select";
+                        var cl = document.getElementById("tofel-score").querySelectorAll(".before-select");
+                        cl.forEach(function(element){
+                            element.className = "button-disable";
+                            element.disabled = true;
+                            })
+                        anyTofelscoreSelected = true;
+                        document.getElementById("result").textContent = "Your Score will be : " + scores[t.textContent];
+                        document.getElementById("result").style.display = "flex" ;
+
+                        document.getElementById("info").style.display = "block";
+
+                        document.getElementById("tables").style.display = "block";
                     }
-                else{
-                    t.className = "after-select";
-                    var cl = document.getElementById("tofel-score").querySelectorAll(".before-select");
-                    cl.forEach(function(element){
-                        element.className = "button-disable";
-                        element.disabled = true;
-                        })
-                    anyTofelscoreSelected = true;
-                    document.getElementById("result").textContent = "Your Score will be : " + scores[t.textContent];
-                    document.getElementById("result").style.display = "flex" ;
 
-                    document.getElementById("info").style.display = "block";
-
-                    document.getElementById("tables").style.display = "block";
-                }
-
-            }   
+                }   
 
 
-            if ( val == "ielts-score"){
-                if (anyIeltsscoreSelected){
-                    t.className = "before-select";
-                    var cl = document.getElementById("ielts-score").querySelectorAll(".button-disable");
-                    cl.forEach(function(element){
-                        element.className = "before-select";
-                        element.disabled = false;
-                        })
-                    anyIeltsscoreSelected = false;
+                if ( val == "ielts-score"){
+                    if (anyIeltsscoreSelected){
+                        t.className = "before-select";
+                        var cl = document.getElementById("ielts-score").querySelectorAll(".button-disable");
+                        cl.forEach(function(element){
+                            element.className = "before-select";
+                            element.disabled = false;
+                            })
+                        anyIeltsscoreSelected = false;
+                        }
+                    else{
+                        t.className = "after-select";
+                        var cl = document.getElementById("ielts-score").querySelectorAll(".before-select");
+                        cl.forEach(function(element){
+                            element.className = "button-disable";
+                            element.disabled = true;
+                            })
+                        anyIeltsscoreSelected = true;
+                        document.getElementById("result").textContent = "Your Score will be : " + scores[t.textContent];
+                        document.getElementById("result").style.display = "flex" ;
+
+                        document.getElementById("info").style.display = "block";
+
+                        document.getElementById("tables").style.display = "block";
                     }
-                else{
-                    t.className = "after-select";
-                    var cl = document.getElementById("ielts-score").querySelectorAll(".before-select");
-                    cl.forEach(function(element){
-                        element.className = "button-disable";
-                        element.disabled = true;
-                        })
-                    anyIeltsscoreSelected = true;
-                    document.getElementById("result").textContent = "Your Score will be : " + scores[t.textContent];
-                    document.getElementById("result").style.display = "flex" ;
 
-                    document.getElementById("info").style.display = "block";
-
-                    document.getElementById("tables").style.display = "block";
                 }
 
-            }
+                }
+        </script>
 
-            }
-    </script>
-
-</body>
+    </body>
 </html>
