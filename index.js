@@ -161,7 +161,7 @@ Details.find({}, function(err, data){
         res.render("score_converter");
     });
     app.get("/login",function(req,res){
-        res.render("login")
+        res.render("login");
     });
     
 
