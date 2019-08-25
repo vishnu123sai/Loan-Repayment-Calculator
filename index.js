@@ -159,7 +159,10 @@ Details.find({}, function(err, data){
 
     app.get("/score-converter", function(req, res){
         res.render("score_converter");
-    })
+    });
+    app.get("/login",function(req,res){
+        res.render("login");
+    });
     
 
     app.post("/apply-loan",urlencodedParser, function(req, res){
