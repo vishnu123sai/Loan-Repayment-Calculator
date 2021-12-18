@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: Logging
         run: |
-          echo "${{toJSON(github.event.commits)}}"
+          echo "${{toJSON(github.event.commits[0])}}"
